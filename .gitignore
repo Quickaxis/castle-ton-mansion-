@@ -1,0 +1,7 @@
+# Ignore large local image backups
+photos/*_orig.*
+
+# Ignore system/IDE cache
+.DS_Store
+Thumbs.db
+.gemini/
