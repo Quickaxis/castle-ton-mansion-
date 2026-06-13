@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavHighlight();
   initImageFallbacks();
   initBookingModal();
+  initInstagramEmbeds();
 });
 
 // ── NAVBAR — scroll & active state ─────────────────────────
@@ -383,4 +384,49 @@ function initBookingModal() {
       setTimeout(closeModal, 600);
     });
   }
+}
+
+// ── INSTAGRAM LAZY EMBEDS ─────────────────────────────────
+function initInstagramEmbeds() {
+  const instagramSection = document.getElementById('instagram');
+  if (!instagramSection) return;
+
+  // Only load embeds on desktop/tablet (width >= 768px)
+  const isMobile = window.innerWidth < 768;
+  if (isMobile) {
+    instagramSection.classList.add('insta-mobile-fallback');
+    return;
+  }
+
+  // Set up IntersectionObserver to lazy load the script when near viewport
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        loadInstagramScript();
+        observer.disconnect(); // Only run once
+      }
+    });
+  }, { rootMargin: '200px' }); // Load when 200px from viewport
+
+  observer.observe(instagramSection);
+}
+
+function loadInstagramScript() {
+  // Check if script already exists
+  if (document.querySelector('script[src*="instagram.com/embed.js"]')) {
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.instagram.com/embed.js';
+  script.onload = () => {
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  };
+  document.body.appendChild(script);
 }

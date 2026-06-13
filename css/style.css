@@ -1410,45 +1410,133 @@ ul { list-style: none; }
    ============================================================ */
 .instagram { background: var(--ivory-dark); }
 
-.insta-handle-btn {
+.insta-header-meta {
   margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.insta-handle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.insta-handle-btn {
+  margin-top: 0;
 }
 
 .insta-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 24px;
   margin-top: 52px;
 }
 
-.insta-tile {
+.insta-tile-wrapper {
   position: relative;
-  border-radius: 24px;
+  border-radius: 28px;
   overflow: hidden;
-  background: #d5d5cb;
-  aspect-ratio: 1;
-  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  background: var(--white-glass2);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  min-height: 450px;
 }
-.insta-tile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-  background: linear-gradient(135deg, #d5d5cb, #c8c7c0);
-}
-.insta-tile:hover img { transform: scale(1.08); }
 
-.insta-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(215,255,63,0.7);
+.insta-tile-wrapper:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Fallback Card Style */
+.insta-fallback-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 24px;
+  background: var(--white-glass2);
+  border: 1px solid var(--border-glass);
+  border-radius: 28px;
+  height: 100%;
+  text-align: center;
+  transition: var(--transition);
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.insta-fallback-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--lime);
+  box-shadow: 0 12px 30px rgba(215, 255, 63, 0.2);
+}
+
+.insta-fallback-icon {
+  color: var(--navy);
+  background: var(--lime-soft);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: var(--transition);
 }
-.insta-tile:hover .insta-overlay { opacity: 1; }
+
+.insta-fallback-card:hover .insta-fallback-icon {
+  background: var(--lime);
+  transform: scale(1.1);
+}
+
+.insta-fallback-text {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+.insta-fallback-btn {
+  pointer-events: none; /* Click propagates to card link */
+}
+
+/* Embed Container */
+.insta-embed-container {
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Toggle displays when iframe exists */
+.insta-tile-wrapper:has(iframe) {
+  aspect-ratio: auto;
+  min-height: auto;
+}
+
+.insta-tile-wrapper:has(iframe) .insta-embed-container {
+  display: block;
+}
+
+.insta-tile-wrapper:has(iframe) .insta-fallback-card {
+  display: none !important;
+}
+
+/* Make sure the generated iframe fits beautifully and has border-radius */
+.insta-embed-container iframe {
+  margin: 0 !important;
+  border-radius: 28px !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
 
 
 /* ============================================================
@@ -2125,7 +2213,10 @@ img:not([src]), img[src=""] {
     height: clamp(220px, 35vw, 320px);
   }
   .why-grid { grid-template-columns: 1fr; }
-  .insta-grid { grid-template-columns: repeat(2, 1fr); }
+  .insta-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .instagram .insta-embed-container { display: none !important; }
+  .instagram .insta-fallback-card { display: flex !important; }
+  .instagram .insta-tile-wrapper { aspect-ratio: 1 !important; min-height: unset !important; }
   .offer-inner { flex-direction: column; padding: 48px 32px; text-align: center; }
   .offer-right { display: flex; justify-content: center; }
   .location-info { padding: 32px 28px; }
