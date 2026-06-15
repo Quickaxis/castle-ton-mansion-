@@ -46,13 +46,12 @@
 6. Location
 7. Final Booking CTA
 
-## 7. Room Names & Prices
+## 7. Room Categories & Prices
 
-- **Chandra**: ₹3,483
-- **Bhargavi**: ₹3,583
-- **Anagha**: ₹3,383
-- **Amrita**: ₹3,383
-- **Pushti**: ₹3,783
+- **Ground Floor Room with Balcony**: ₹3,000
+- **Ground Floor Room without Balcony**: ₹2,800
+- **First Floor Room with Balcony**: ₹3,000
+- **First Floor Room without Balcony**: ₹2,600
 
 *Launch Offer: 10% off on all bookings*
 
@@ -81,92 +80,77 @@ Room name font:
 * Cormorant Garamond / Playfair Display for room names
 * Manrope / Plus Jakarta Sans for all other text
 
-## 9. Room Names, Prices & Descriptions
+## 9. Room Categories, Prices & Descriptions
 
-### Chandra — ₹3,499/Night
+### Ground Floor Room with Balcony — ₹3,000/Night
 
-A spacious premium room designed for guests who prefer extra comfort, warm interiors, and a calm luxury stay.
-
-Suggested amenities:
-
-* Air Conditioning
-* Large Bed
-* Attached Bathroom
-* Towels Provided
-* Wardrobe / Storage
-* Premium Wooden Interiors
-
-CTA: Book Chandra on WhatsApp
-
----
-
-### Bhargavi — ₹3,599/Night
-
-One of the largest rooms at The Castleton Mansion, Bhargavi offers a cozy luxury stay with a private balcony and front-facing villa view.
+A spacious ground floor room with balcony access, designed for guests who want comfort, convenience, and a peaceful stay.
 
 Suggested amenities:
 
-* Private Balcony
+* Balcony
 * Air Conditioning
 * Large Bed
 * Attached Bathroom
-* Front View
-* Spacious Room
-* Premium Wooden Interiors
-
-CTA: Book Bhargavi on WhatsApp
-
----
-
-### Anagha — ₹3,399/Night
-
-Anagha comes with an attached balcony that opens towards the front garden area, making it perfect for a peaceful and romantic stay.
-
-Suggested amenities:
-
-* Attached Balcony
-* Garden Access / Garden View
-* Air Conditioning
-* Large Bed
-* Attached Bathroom
-* Cozy Interior
-
-CTA: Book Anagha on WhatsApp
-
----
-
-### Amrita — ₹3,399/Night
-
-A comfortable and elegant room made for guests who want a peaceful stay with simple luxury, clean interiors, and complete comfort.
-
-Suggested amenities:
-
-* Air Conditioning
-* Large Bed
-* Attached Bathroom
-* Towels Provided
+* Towels
 * Comfortable Interiors
+
+CTA: Book This Room
+WhatsApp: Hi, I want to book the Ground Floor Room with Balcony at The Castleton Mansion. Please share availability.
+
+---
+
+### Ground Floor Room without Balcony — ₹2,800/Night
+
+A cozy and comfortable ground floor room with premium interiors, perfect for guests who prefer easy access and a relaxed stay.
+
+Suggested amenities:
+
+* Air Conditioning
+* Large Bed
+* Attached Bathroom
+* Towels
+* Comfortable Bedding
 * Premium Stay Experience
 
-CTA: Book Amrita on WhatsApp
+CTA: Book This Room
+WhatsApp: Hi, I want to book the Ground Floor Room without Balcony at The Castleton Mansion. Please share availability.
 
 ---
 
-### Pushti — ₹3,799/Night
+### First Floor Room with Balcony — ₹3,000/Night
 
-Pushti is a lavish teakwood-designed room with a separate balcony and open space, perfect for guests looking for a warm, premium escape.
+A premium first floor room with balcony access, warm interiors, and a peaceful atmosphere for a comfortable luxury stay.
 
 Suggested amenities:
 
-* Separate Balcony
-* Teakwood Interior
+* Balcony
 * Air Conditioning
 * Large Bed
 * Attached Bathroom
-* Open Sitting / Chill Space
-* Premium Wooden Design
+* Towels
+* Premium Interiors
 
-CTA: Book Pushti on WhatsApp
+CTA: Book This Room
+WhatsApp: Hi, I want to book the First Floor Room with Balcony at The Castleton Mansion. Please share availability.
+
+---
+
+### First Floor Room without Balcony — ₹2,600/Night
+
+A well-designed first floor room made for guests who want a clean, elegant, and comfortable stay at the best starting price.
+
+Suggested amenities:
+
+* Air Conditioning
+* Large Bed
+* Attached Bathroom
+* Towels
+* Cozy Interior
+* Best Value Stay
+
+CTA: Book This Room
+WhatsApp: Hi, I want to book the First Floor Room without Balcony at The Castleton Mansion. Please share availability.
 
 ## 10. Room Pricing Style
 
@@ -175,11 +159,10 @@ Use rounded premium pricing instead of odd pricing.
 Original room prices can be hidden.
 Website pricing:
 
-* Chandra: ₹3,499
-* Bhargavi: ₹3,599
-* Anagha: ₹3,399
-* Amrita: ₹3,399
-* Pushti: ₹3,799
+* Ground Floor Room with Balcony: ₹3,000
+* Ground Floor Room without Balcony: ₹2,800
+* First Floor Room with Balcony: ₹3,000
+* First Floor Room without Balcony: ₹2,600
 
 Launch Offer:
 Show “10% OFF on all bookings” as a lime announcement badge near the hero section and rooms section.

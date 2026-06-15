@@ -22,7 +22,7 @@ We will create a premium, modern, and minimal website for **The Castleton Mansio
 We will create a multi-section, highly interactive single-page application (SPA style with tabs or smooth transitions) containing:
 1. **Hero Section**: Large immersive imagery, brand tagline ("A Premium Luxury Stay"), and main CTAs.
 2. **About Preview**: Elegant text layout highlighting the Guwahati location, local hospitality, and minimal illustration/images.
-3. **Rooms Showcase**: Interactive cards for Chandra, Bhargavi, Anagha, Amrita, and Pushti. Shows original vs 10% discounted launch price, room features, and quick booking triggers.
+3. **Rooms Showcase**: Interactive cards for the 4 official room categories. Shows original vs discounted launch price, room features, and quick booking triggers.
 4. **Amenities Grid**: Interactive modern icons (Wi-Fi, AC, Parking, Premium Bedding, Caretaker, Housekeeping, Breakfast, etc.) with hover effects.
 5. **Gallery Slider/Lightbox**: A beautiful grid with a responsive modal lightbox to view high-quality images.
 6. **Location Details**: Interactive map placeholder with rich typography, location features, nearby landmarks, and transport info.

@@ -1886,11 +1886,10 @@ ul { list-style: none; }
 /* ============================================================
    IMAGE FALLBACK (when room photos not yet added)
    ============================================================ */
-.carousel-slide img[src*="chandra"],
-.carousel-slide img[src*="bhargavi"],
-.carousel-slide img[src*="anagha"],
-.carousel-slide img[src*="amrita"],
-.carousel-slide img[src*="pushti"] {
+.carousel-slide img[src*="gf-balcony"],
+.carousel-slide img[src*="gf-nobalcony"],
+.carousel-slide img[src*="ff-balcony"],
+.carousel-slide img[src*="ff-nobalcony"] {
   background: linear-gradient(135deg, #d5d5cb 0%, #e0dfd9 50%, #c8c7c0 100%);
 }
 

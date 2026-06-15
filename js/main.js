@@ -96,12 +96,11 @@ function initNavHighlight() {
 // ── CAROUSELS ──────────────────────────────────────────────
 function initCarousels() {
   const rooms = [
-    { track: 'chandraTrack',  dots: 'chandraDotsChandra' },
-    { track: 'bhargaviTrack', dots: 'bhargaviDots' },
-    { track: 'anaghaTrack',   dots: 'anaghaDots' },
-    { track: 'amritaTrack',   dots: 'amritaDots' },
-    { track: 'pushtiTrack',   dots: 'pushtiDots' },
-    { track: 'aboutRoomTrack', dots: 'aboutRoomDots' },
+    { track: 'gfBalconyTrack',  dots: 'gfBalconyDots' },
+    { track: 'gfNoBalconyTrack', dots: 'gfNoBalconyDots' },
+    { track: 'ffBalconyTrack',   dots: 'ffBalconyDots' },
+    { track: 'ffNoBalconyTrack', dots: 'ffNoBalconyDots' },
+    { track: 'aboutRoomTrack',  dots: 'aboutRoomDots' },
   ];
 
   rooms.forEach(room => setupCarousel(room.track, room.dots));
@@ -326,7 +325,7 @@ function initBookingModal() {
   function openModal(roomName = "") {
     if (roomName) {
       modalTitle.textContent = `Book ${roomName}`;
-      const text = `Hi, I want to book ${roomName} at The Castleton Mansion. Please share availability.`;
+      const text = `Hi, I want to book the ${roomName} at The Castleton Mansion. Please share availability.`;
       whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
     } else {
       modalTitle.textContent = defaultTitle;
