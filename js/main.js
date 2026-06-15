@@ -115,10 +115,18 @@ function setupCarousel(trackId, dotsContainerId) {
   const slideCount = track.children.length;
   if (slideCount === 0) return;
 
+  if (slideCount <= 1) {
+    if (dotsWrap) dotsWrap.style.display = 'none';
+    const prevBtn = carousel.querySelector('.carousel-btn.prev');
+    const nextBtn = carousel.querySelector('.carousel-btn.next');
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+    return;
+  }
+
   let current = 0;
   let isDragging = false;
   let startX = 0;
-  let autoTimer;
 
   // Build dots
   dotsWrap.innerHTML = '';
@@ -158,14 +166,14 @@ function setupCarousel(trackId, dotsContainerId) {
   // Button controls
   const prevBtn = carousel.querySelector('.carousel-btn.prev');
   const nextBtn = carousel.querySelector('.carousel-btn.next');
-  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); resetAuto(); });
-  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); resetAuto(); });
+  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
 
   // Keyboard
   carousel.setAttribute('tabindex', '0');
   carousel.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft')  { prev(); resetAuto(); }
-    if (e.key === 'ArrowRight') { next(); resetAuto(); }
+    if (e.key === 'ArrowLeft')  { prev(); }
+    if (e.key === 'ArrowRight') { next(); }
   });
 
   // Touch / swipe
@@ -179,7 +187,6 @@ function setupCarousel(trackId, dotsContainerId) {
     const diff = startX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) {
       diff > 0 ? next() : prev();
-      resetAuto();
     }
     isDragging = false;
   });
@@ -195,7 +202,6 @@ function setupCarousel(trackId, dotsContainerId) {
     const diff = startX - e.clientX;
     if (Math.abs(diff) > 40) {
       diff > 0 ? next() : prev();
-      resetAuto();
     }
     isDragging = false;
     carousel.style.cursor = 'grab';
@@ -205,44 +211,6 @@ function setupCarousel(trackId, dotsContainerId) {
     carousel.style.cursor = 'grab';
   });
   carousel.style.cursor = 'grab';
-
-  let isVisible = false;
-
-  // Auto-slide (pauses on hover or when off-screen)
-  function startAuto() {
-    if (autoTimer) clearInterval(autoTimer);
-    if (isVisible) {
-      autoTimer = setInterval(next, 4500);
-    }
-  }
-  function stopAuto() {
-    if (autoTimer) clearInterval(autoTimer);
-  }
-  function resetAuto() {
-    stopAuto();
-    startAuto();
-  }
-
-  carousel.addEventListener('mouseenter', stopAuto);
-  carousel.addEventListener('mouseleave', startAuto);
-
-  // Pause when offscreen using IntersectionObserver
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        isVisible = entry.isIntersecting;
-        if (isVisible) {
-          startAuto();
-        } else {
-          stopAuto();
-        }
-      });
-    }, { threshold: 0.05 });
-    observer.observe(carousel);
-  } else {
-    isVisible = true;
-    startAuto();
-  }
 }
 
 // ── SCROLL ANIMATIONS ──────────────────────────────────────
