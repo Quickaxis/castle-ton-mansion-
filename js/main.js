@@ -145,19 +145,6 @@ function setupCarousel(trackId, dotsContainerId) {
     current = (idx + slideCount) % slideCount;
     track.style.transform = `translate3d(-${current * 100}%, 0, 0)`;
     dots.forEach((d, i) => d.classList.toggle('active', i === current));
-
-    // Lazy load next/adjacent slide images when active
-    const slidesToLoad = [current, (current + 1) % slideCount, (current - 1 + slideCount) % slideCount];
-    slidesToLoad.forEach(slideIndex => {
-      const slideEl = track.children[slideIndex];
-      if (slideEl) {
-        const img = slideEl.querySelector('img[data-src]');
-        if (img) {
-          img.setAttribute('src', img.getAttribute('data-src'));
-          img.removeAttribute('data-src');
-        }
-      }
-    });
   }
 
   function next() { goTo(current + 1); }
@@ -211,6 +198,8 @@ function setupCarousel(trackId, dotsContainerId) {
     carousel.style.cursor = 'grab';
   });
   carousel.style.cursor = 'grab';
+
+  goTo(0);
 }
 
 // ── SCROLL ANIMATIONS ──────────────────────────────────────
