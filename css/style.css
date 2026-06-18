@@ -1053,6 +1053,206 @@ ul { list-style: none; }
   padding: 14px 28px;
 }
 
+/* ============================================================
+   STAY SELECTOR & APARTMENTS ADDITIONS
+   ============================================================ */
+.stay-selector-area {
+  margin-bottom: 40px;
+}
+.stay-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 40px;
+}
+.stay-card {
+  padding: 40px;
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.4);
+}
+.stay-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+.stay-card.selected {
+  border-color: var(--lime);
+  background: rgba(215, 255, 63, 0.05);
+}
+.stay-badge {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--lime);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+}
+.stay-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 10px 0 5px;
+}
+.stay-card-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.btn-stay-select {
+  margin-top: auto;
+}
+
+.stay-tabs-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 48px;
+  margin-top: 20px;
+}
+.stay-tabs-wrap.hidden {
+  display: none !important;
+}
+.stay-tab {
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.stay-tab.active {
+  background: #DFFF3F;
+  color: #101010;
+  border: 2px solid #DFFF3F;
+}
+.stay-tab:not(.active) {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--dark);
+  border: 2px solid rgba(18, 50, 74, 0.2);
+}
+.stay-tab:not(.active):hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(18, 50, 74, 0.4);
+}
+
+.room-stay-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--navy);
+  color: var(--lime);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
+
+.apartment-subsection {
+  margin-top: 60px;
+  border-top: 1px solid rgba(16, 16, 16, 0.08);
+  padding-top: 48px;
+}
+.subsection-header {
+  margin-bottom: 36px;
+}
+.subsection-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.subsection-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.property-details-box {
+  background: rgba(18, 50, 74, 0.04);
+  border: 1px solid rgba(18, 50, 74, 0.08);
+  padding: 20px 24px;
+  border-radius: 20px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  margin-top: 18px;
+  font-size: 0.92rem;
+  color: var(--dark);
+  max-width: 540px;
+}
+.phone-link {
+  color: var(--navy);
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+/* Modal step additions */
+.modal-step {
+  transition: opacity 0.25s ease;
+}
+.modal-step.hidden {
+  display: none !important;
+}
+.modal-property-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+.modal-prop-btn {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 20px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .stay-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .stay-card {
+    padding: 28px 24px;
+  }
+  .stay-tabs-wrap {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .stay-tab {
+    flex: 1;
+    min-width: 140px;
+    padding: 10px 16px;
+    font-size: 0.84rem;
+    text-align: center;
+  }
+  .property-details-box {
+    width: 100%;
+    padding: 16px;
+  }
+}
+
 
 /* ============================================================
    LAUNCH OFFER

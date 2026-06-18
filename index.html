@@ -162,169 +162,525 @@
   </section>
 
   <!-- ==================== ROOMS ==================== -->
+  <!-- ==================== ROOMS ==================== -->
   <section class="rooms section-pad" id="rooms" aria-label="Rooms Section">
     <div class="container">
-      <div class="section-header center" data-animate="fade-up">
-        <div class="section-label">OUR ROOMS</div>
-        <h2 class="section-heading">Four Distinct Luxury Suites</h2>
-        <p class="section-desc">Rooms starting from ₹2,600 only</p>
+      
+      <!-- Stay Type Selector (visible by default) -->
+      <div id="staySelectorArea" class="stay-selector-area" data-animate="fade-up">
+        <div class="section-header center">
+          <div class="section-label">OUR ROOMS</div>
+          <h2 class="section-heading">Which stay would you like to explore?</h2>
+          <p class="section-desc">Choose between our mansion-style rooms and spacious apartment stays.</p>
+        </div>
+        
+        <div class="stay-cards-grid">
+          <!-- Card 1: Mansion Stay -->
+          <div class="stay-card glass-card" id="selectMansionCard">
+            <span class="stay-badge">Mansion Stay</span>
+            <div>
+              <h3 class="stay-card-title">Castleton Mansion Rooms</h3>
+              <p class="stay-card-subtitle">Boutique mansion-style rooms for a peaceful premium stay.</p>
+            </div>
+            <button class="btn btn-lime btn-stay-select" id="selectMansionBtn">View Mansion Rooms</button>
+          </div>
+          
+          <!-- Card 2: Apartment Stay -->
+          <div class="stay-card glass-card" id="selectApartmentCard">
+            <span class="stay-badge">Apartment Stay</span>
+            <div>
+              <h3 class="stay-card-title">Castleton Apartment Rooms</h3>
+              <p class="stay-card-subtitle">Spacious 2BHK and 3BHK apartment stays for families, groups, and longer visits.</p>
+            </div>
+            <button class="btn btn-lime btn-stay-select" id="selectApartmentBtn">View Apartment Rooms</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Selection Tabs (hidden by default) -->
+      <div id="stayTabsWrap" class="stay-tabs-wrap hidden" data-animate="fade-up">
+        <button class="stay-tab" id="tabMansion" data-target="mansion">Mansion Rooms</button>
+        <button class="stay-tab" id="tabApartment" data-target="apartment">Apartment Rooms</button>
       </div>
 
-      <!-- Room: Room 1 -->
-      <div class="room-card glass-card" id="roomGfBalcony" data-animate="fade-up">
-        <div class="room-carousel" data-room="gf-balcony">
-          <div class="carousel-track" id="gfBalconyTrack">
-            <div class="carousel-slide"><img src="photos/groundfloorwithbalcony1.png" alt="Room 1 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
-            <div class="carousel-slide"><img src="photos/groundfloorwithbalcony2.png" alt="Room 1 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
-            <div class="carousel-slide"><img src="photos/groundfloorwithbalcony3.png" alt="Room 1 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
-          </div>
-          <button class="carousel-btn prev" aria-label="Previous photo" data-track="gfBalconyTrack">&#8592;</button>
-          <button class="carousel-btn next" aria-label="Next photo" data-track="gfBalconyTrack">&#8594;</button>
-          <div class="carousel-dots" id="gfBalconyDots"></div>
+      <!-- ==================== MANSION ROOMS CONTAINER ==================== -->
+      <div id="mansionRoomsContainer" class="rooms-container hidden">
+        <div class="section-header center" data-animate="fade-up">
+          <h2 class="section-heading font-serif">Castleton Mansion Rooms</h2>
+          <p class="section-desc">Premium mansion-style rooms with warm interiors, comfort, and easy WhatsApp booking.</p>
         </div>
-        <div class="room-info">
-          <div class="room-top">
-            <h3 class="room-name">Room 1</h3>
-            <div class="room-price"><span class="price-tag">₹3,000</span><span class="price-night">/Night</span></div>
+
+        <!-- Room: Room 1 -->
+        <div class="room-card glass-card" id="roomGfBalcony" data-animate="fade-up">
+          <div class="room-carousel" data-room="gf-balcony">
+            <div class="carousel-track" id="gfBalconyTrack">
+              <div class="carousel-slide"><img src="photos/groundfloorwithbalcony1.png" alt="Room 1 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+              <div class="carousel-slide"><img src="photos/groundfloorwithbalcony2.png" alt="Room 1 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+              <div class="carousel-slide"><img src="photos/groundfloorwithbalcony3.png" alt="Room 1 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous photo" data-track="gfBalconyTrack">&#8592;</button>
+            <button class="carousel-btn next" aria-label="Next photo" data-track="gfBalconyTrack">&#8594;</button>
+            <div class="carousel-dots" id="gfBalconyDots"></div>
           </div>
-          <p class="room-desc">A spacious and comfortable room designed for a peaceful premium stay with warm interiors and modern comfort.</p>
-          <div class="amenities-row">
-            <span class="amenity-chip">Air Conditioning</span>
-            <span class="amenity-chip">Large Bed</span>
-            <span class="amenity-chip">Attached Bathroom</span>
-            <span class="amenity-chip">Towels</span>
-            <span class="amenity-chip">Comfortable Interiors</span>
-            <span class="amenity-chip">Premium Stay Experience</span>
+          <div class="room-info">
+            <span class="room-stay-badge">MANSION STAY</span>
+            <div class="room-top">
+              <h3 class="room-name">Room 1</h3>
+              <div class="room-price"><span class="price-tag">₹3,000</span><span class="price-night">/Night</span></div>
+            </div>
+            <p class="room-desc">A spacious and comfortable room designed for a peaceful premium stay with warm interiors and modern comfort.</p>
+            <div class="amenities-row">
+              <span class="amenity-chip">Air Conditioning</span>
+              <span class="amenity-chip">Large Bed</span>
+              <span class="amenity-chip">Attached Bathroom</span>
+              <span class="amenity-chip">Towels</span>
+              <span class="amenity-chip">Comfortable Interiors</span>
+              <span class="amenity-chip">Premium Stay Experience</span>
+            </div>
+            <div class="room-actions-row">
+              <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="Room 1" id="bookGfBalconyBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Book Room 1
+              </button>
+              <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Call to Book
+              </a>
+            </div>
           </div>
-          <div class="room-actions-row">
-            <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="Room 1" id="bookGfBalconyBtn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Book Room 1
-            </button>
-            <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              Call to Book
-            </a>
+        </div>
+
+        <!-- Room: Room 2 -->
+        <div class="room-card glass-card room-card-reverse" id="roomGfNoBalcony" data-animate="fade-up">
+          <div class="room-carousel" data-room="gf-nobalcony">
+            <div class="carousel-track" id="gfNoBalconyTrack">
+              <div class="carousel-slide"><img src="photos/groundfloorwithoutbalcony1.png" alt="Room 2 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+              <div class="carousel-slide"><img src="photos/groundfloorwithoutbalcony2.png" alt="Room 2 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+              <div class="carousel-slide"><img src="photos/groundfloorwithoutbalcony3.png" alt="Room 2 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous photo" data-track="gfNoBalconyTrack">&#8592;</button>
+            <button class="carousel-btn next" aria-label="Next photo" data-track="gfNoBalconyTrack">&#8594;</button>
+            <div class="carousel-dots" id="gfNoBalconyDots"></div>
+          </div>
+          <div class="room-info">
+            <span class="room-stay-badge">MANSION STAY</span>
+            <div class="room-top">
+              <h3 class="room-name">Room 2</h3>
+              <div class="room-price"><span class="price-tag">₹2,800</span><span class="price-night">/Night</span></div>
+            </div>
+            <p class="room-desc">A cozy and elegant room made for guests who want comfort, privacy, and a relaxed mansion-style stay.</p>
+            <div class="amenities-row">
+              <span class="amenity-chip">Air Conditioning</span>
+              <span class="amenity-chip">Large Bed</span>
+              <span class="amenity-chip">Attached Bathroom</span>
+              <span class="amenity-chip">Towels</span>
+              <span class="amenity-chip">Comfortable Bedding</span>
+              <span class="amenity-chip">Premium Stay Experience</span>
+            </div>
+            <div class="room-actions-row">
+              <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="Room 2" id="bookGfNoBalconyBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Book Room 2
+              </button>
+              <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Call to Book
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room: Room 3 -->
+        <div class="room-card glass-card" id="roomFfBalcony" data-animate="fade-up">
+          <div class="room-carousel" data-room="ff-balcony">
+            <div class="carousel-track" id="ffBalconyTrack">
+              <div class="carousel-slide"><img src="photos/firstfloorroomwithbalcony.png" alt="Room 3 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+              <div class="carousel-slide"><img src="photos/firstfloorroomwithbalcony2.png" alt="Room 3 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+              <div class="carousel-slide"><img src="photos/firstfloorroomwithbalcony3.png" alt="Room 3 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous photo" data-track="ffBalconyTrack">&#8592;</button>
+            <button class="carousel-btn next" aria-label="Next photo" data-track="ffBalconyTrack">&#8594;</button>
+            <div class="carousel-dots" id="ffBalconyDots"></div>
+          </div>
+          <div class="room-info">
+            <span class="room-stay-badge">MANSION STAY</span>
+            <div class="room-top">
+              <h3 class="room-name">Room 3</h3>
+              <div class="room-price"><span class="price-tag">₹3,000</span><span class="price-night">/Night</span></div>
+            </div>
+            <p class="room-desc">A premium room with warm interiors and a calm atmosphere, perfect for a comfortable luxury stay.</p>
+            <div class="amenities-row">
+              <span class="amenity-chip">Air Conditioning</span>
+              <span class="amenity-chip">Large Bed</span>
+              <span class="amenity-chip">Attached Bathroom</span>
+              <span class="amenity-chip">Towels</span>
+              <span class="amenity-chip">Premium Interiors</span>
+              <span class="amenity-chip">Peaceful Stay</span>
+            </div>
+            <div class="room-actions-row">
+              <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="Room 3" id="bookFfBalconyBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Book Room 3
+              </button>
+              <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Call to Book
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room: Room 4 -->
+        <div class="room-card glass-card room-card-reverse" id="roomFfNoBalcony" data-animate="fade-up">
+          <div class="room-carousel" data-room="ff-nobalcony">
+            <div class="carousel-track" id="ffNoBalconyTrack">
+              <div class="carousel-slide"><img src="photos/withoutbalconyfirstfloor1.png" alt="Room 4 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+              <div class="carousel-slide"><img src="photos/withoutbalconyfirstfloor2.png" alt="Room 4 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+              <div class="carousel-slide"><img src="photos/withoutbalconyfirstfloor3.png" alt="Room 4 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous photo" data-track="ffNoBalconyTrack">&#8592;</button>
+            <button class="carousel-btn next" aria-label="Next photo" data-track="ffNoBalconyTrack">&#8594;</button>
+            <div class="carousel-dots" id="ffNoBalconyDots"></div>
+          </div>
+          <div class="room-info">
+            <span class="room-stay-badge">MANSION STAY</span>
+            <div class="room-top">
+              <h3 class="room-name">Room 4</h3>
+              <div class="room-price"><span class="price-tag">₹2,600</span><span class="price-night">/Night</span></div>
+            </div>
+            <p class="room-desc">A clean, elegant, and comfortable room designed for guests looking for the best-value premium stay.</p>
+            <div class="amenities-row">
+              <span class="amenity-chip">Air Conditioning</span>
+              <span class="amenity-chip">Large Bed</span>
+              <span class="amenity-chip">Attached Bathroom</span>
+              <span class="amenity-chip">Towels</span>
+              <span class="amenity-chip">Cozy Interior</span>
+              <span class="amenity-chip">Best Value Stay</span>
+            </div>
+            <div class="room-actions-row">
+              <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="Room 4" id="bookFfNoBalconyBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Book Room 4
+              </button>
+              <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Call to Book
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Room: Room 2 -->
-      <div class="room-card glass-card room-card-reverse" id="roomGfNoBalcony" data-animate="fade-up">
-        <div class="room-carousel" data-room="gf-nobalcony">
-          <div class="carousel-track" id="gfNoBalconyTrack">
-            <div class="carousel-slide"><img src="photos/groundfloorwithoutbalcony1.png" alt="Room 2 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
-            <div class="carousel-slide"><img src="photos/groundfloorwithoutbalcony2.png" alt="Room 2 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
-            <div class="carousel-slide"><img src="photos/groundfloorwithoutbalcony3.png" alt="Room 2 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+      <!-- ==================== APARTMENT ROOMS CONTAINER ==================== -->
+      <div id="apartmentRoomsContainer" class="rooms-container hidden">
+        <div class="section-header center" data-animate="fade-up">
+          <h2 class="section-heading font-serif">Castleton Apartment Rooms</h2>
+          <p class="section-desc">Spacious 2BHK and 3BHK apartment stays designed for families, groups, holiday packages, and longer comfortable stays.</p>
+          
+          <div class="property-details-box glass-card">
+            <p><strong>Property:</strong> The Castleton Apartment</p>
+            <p><strong>Location:</strong> Jurani Path, Six Mile, Guwahati, Assam 781036</p>
+            <p><strong>Booking Phone:</strong> <a href="tel:+919864323486" class="phone-link">+91 98643 23486</a></p>
           </div>
-          <button class="carousel-btn prev" aria-label="Previous photo" data-track="gfNoBalconyTrack">&#8592;</button>
-          <button class="carousel-btn next" aria-label="Next photo" data-track="gfNoBalconyTrack">&#8594;</button>
-          <div class="carousel-dots" id="gfNoBalconyDots"></div>
         </div>
-        <div class="room-info">
-          <div class="room-top">
-            <h3 class="room-name">Room 2</h3>
-            <div class="room-price"><span class="price-tag">₹2,800</span><span class="price-night">/Night</span></div>
+
+        <!-- Subsection: 2BHK Unit -->
+        <div class="apartment-subsection">
+          <div class="subsection-header" data-animate="fade-up">
+            <h3 class="subsection-title">2BHK Unit</h3>
+            <p class="subsection-desc">A spacious apartment stay with hall, dining, and two comfortable rooms.</p>
           </div>
-          <p class="room-desc">A cozy and elegant room made for guests who want comfort, privacy, and a relaxed mansion-style stay.</p>
-          <div class="amenities-row">
-            <span class="amenity-chip">Air Conditioning</span>
-            <span class="amenity-chip">Large Bed</span>
-            <span class="amenity-chip">Attached Bathroom</span>
-            <span class="amenity-chip">Towels</span>
-            <span class="amenity-chip">Comfortable Bedding</span>
-            <span class="amenity-chip">Premium Stay Experience</span>
+
+          <!-- Card: 2BHK Unit — Hall + Dining -->
+          <div class="room-card glass-card" id="roomApt2bhkHall" data-animate="fade-up">
+            <div class="room-carousel" data-room="apt-2bhk-hall">
+              <div class="carousel-track" id="apt2bhkHallTrack">
+                <div class="carousel-slide"><img src="photos/apartment/2bhk unit 1/hallsofa.png" alt="2BHK Unit Hall + Dining View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/2bhk unit 1/HALLSOFA2.JPG" alt="2BHK Unit Hall + Dining View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/2bhk unit 1/HALLSOFA3.JPG" alt="2BHK Unit Hall + Dining View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+              </div>
+              <button class="carousel-btn prev" aria-label="Previous photo" data-track="apt2bhkHallTrack">&#8592;</button>
+              <button class="carousel-btn next" aria-label="Next photo" data-track="apt2bhkHallTrack">&#8594;</button>
+              <div class="carousel-dots" id="apt2bhkHallDots"></div>
+            </div>
+            <div class="room-info">
+              <span class="room-stay-badge">APARTMENT STAY</span>
+              <div class="room-top">
+                <h3 class="room-name">2BHK Unit — Hall + Dining</h3>
+                <div class="room-price"><span class="price-tag">Price on Request</span></div>
+              </div>
+              <p class="room-desc">A spacious hall and dining area made for families and groups who want comfort, space, and a homely apartment-style stay.</p>
+              <div class="amenities-row">
+                <span class="amenity-chip">Hall + Dining</span>
+                <span class="amenity-chip">Sofa Seating</span>
+                <span class="amenity-chip">Dining Area</span>
+                <span class="amenity-chip">Air Conditioning</span>
+                <span class="amenity-chip">Spacious Interiors</span>
+                <span class="amenity-chip">Family Friendly</span>
+              </div>
+              <div class="room-actions-row">
+                <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="2BHK Unit Hall + Dining" id="bookApt2bhkHallBtn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Book Apartment Stay
+                </button>
+                <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Call to Book
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="room-actions-row">
-            <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="Room 2" id="bookGfNoBalconyBtn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Book Room 2
-            </button>
-            <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              Call to Book
-            </a>
+
+          <!-- Card: 2BHK Unit — Room 1 -->
+          <div class="room-card glass-card room-card-reverse" id="roomApt2bhkRoom1" data-animate="fade-up">
+            <div class="room-carousel" data-room="apt-2bhk-room1">
+              <div class="carousel-track" id="apt2bhkRoom1Track">
+                <div class="carousel-slide"><img src="photos/apartment/2bhk unit 1/room1a.jpg" alt="2BHK Unit Room 1 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/2bhk unit 1/room1b.jpg" alt="2BHK Unit Room 1 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/2bhk unit 1/room1c.jpg" alt="2BHK Unit Room 1 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+              </div>
+              <button class="carousel-btn prev" aria-label="Previous photo" data-track="apt2bhkRoom1Track">&#8592;</button>
+              <button class="carousel-btn next" aria-label="Next photo" data-track="apt2bhkRoom1Track">&#8594;</button>
+              <div class="carousel-dots" id="apt2bhkRoom1Dots"></div>
+            </div>
+            <div class="room-info">
+              <span class="room-stay-badge">APARTMENT STAY</span>
+              <div class="room-top">
+                <h3 class="room-name">2BHK Unit — Room 1</h3>
+                <div class="room-price"><span class="price-tag">Price on Request</span></div>
+              </div>
+              <p class="room-desc">A comfortable room inside the 2BHK unit with warm interiors and apartment-style privacy.</p>
+              <div class="amenities-row">
+                <span class="amenity-chip">Air Conditioning</span>
+                <span class="amenity-chip">Large Bed</span>
+                <span class="amenity-chip">Bathroom Access</span>
+                <span class="amenity-chip">Towels</span>
+                <span class="amenity-chip">Apartment Stay</span>
+                <span class="amenity-chip">Comfortable Interiors</span>
+              </div>
+              <div class="room-actions-row">
+                <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="2BHK Room 1" id="bookApt2bhkRoom1Btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Book This Room
+                </button>
+                <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Call to Book
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: 2BHK Unit — Room 2 -->
+          <div class="room-card glass-card" id="roomApt2bhkRoom2" data-animate="fade-up">
+            <div class="room-carousel" data-room="apt-2bhk-room2">
+              <div class="carousel-track" id="apt2bhkRoom2Track">
+                <div class="carousel-slide"><img src="photos/apartment/2bhk unit 1/room2a.jpg" alt="2BHK Unit Room 2 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/2bhk unit 1/room2b.jpg" alt="2BHK Unit Room 2 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/2bhk unit 1/room2c.jpg" alt="2BHK Unit Room 2 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+              </div>
+              <button class="carousel-btn prev" aria-label="Previous photo" data-track="apt2bhkRoom2Track">&#8592;</button>
+              <button class="carousel-btn next" aria-label="Next photo" data-track="apt2bhkRoom2Track">&#8594;</button>
+              <div class="carousel-dots" id="apt2bhkRoom2Dots"></div>
+            </div>
+            <div class="room-info">
+              <span class="room-stay-badge">APARTMENT STAY</span>
+              <div class="room-top">
+                <h3 class="room-name">2BHK Unit — Room 2</h3>
+                <div class="room-price"><span class="price-tag">Price on Request</span></div>
+              </div>
+              <p class="room-desc">A clean and spacious second room inside the 2BHK apartment, ideal for families and group stays.</p>
+              <div class="amenities-row">
+                <span class="amenity-chip">Air Conditioning</span>
+                <span class="amenity-chip">Large Bed</span>
+                <span class="amenity-chip">Bathroom Access</span>
+                <span class="amenity-chip">Towels</span>
+                <span class="amenity-chip">Apartment Stay</span>
+                <span class="amenity-chip">Comfortable Interiors</span>
+              </div>
+              <div class="room-actions-row">
+                <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="2BHK Room 2" id="bookApt2bhkRoom2Btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Book This Room
+                </button>
+                <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Call to Book
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subsection: 3BHK Unit -->
+        <div class="apartment-subsection">
+          <div class="subsection-header" data-animate="fade-up">
+            <h3 class="subsection-title">3BHK Unit</h3>
+            <p class="subsection-desc">A larger apartment stay with hall, dining, and three comfortable rooms for families and groups.</p>
+          </div>
+
+          <!-- Card: 3BHK Unit — Hall + Dining -->
+          <div class="room-card glass-card" id="roomApt3bhkHall" data-animate="fade-up">
+            <div class="room-carousel" data-room="apt-3bhk-hall">
+              <div class="carousel-track" id="apt3bhkHallTrack">
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/3bhkhall1.jpg" alt="3BHK Unit Hall + Dining View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/3bhkhall2.jpg" alt="3BHK Unit Hall + Dining View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/3bhkhall3.jpg" alt="3BHK Unit Hall + Dining View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+              </div>
+              <button class="carousel-btn prev" aria-label="Previous photo" data-track="apt3bhkHallTrack">&#8592;</button>
+              <button class="carousel-btn next" aria-label="Next photo" data-track="apt3bhkHallTrack">&#8594;</button>
+              <div class="carousel-dots" id="apt3bhkHallDots"></div>
+            </div>
+            <div class="room-info">
+              <span class="room-stay-badge">APARTMENT STAY</span>
+              <div class="room-top">
+                <h3 class="room-name">3BHK Unit — Hall + Dining</h3>
+                <div class="room-price"><span class="price-tag">Price on Request</span></div>
+              </div>
+              <p class="room-desc">A larger hall and dining area designed for groups, families, and comfortable holiday stays.</p>
+              <div class="amenities-row">
+                <span class="amenity-chip">Hall + Dining</span>
+                <span class="amenity-chip">Sofa Seating</span>
+                <span class="amenity-chip">Dining Area</span>
+                <span class="amenity-chip">Air Conditioning</span>
+                <span class="amenity-chip">Spacious Interiors</span>
+                <span class="amenity-chip">Group Friendly</span>
+              </div>
+              <div class="room-actions-row">
+                <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="3BHK Unit Hall + Dining" id="bookApt3bhkHallBtn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Book Apartment Stay
+                </button>
+                <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Call to Book
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: 3BHK Unit — Room 1 -->
+          <div class="room-card glass-card room-card-reverse" id="roomApt3bhkRoom1" data-animate="fade-up">
+            <div class="room-carousel" data-room="apt-3bhk-room1">
+              <div class="carousel-track" id="apt3bhkRoom1Track">
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/room1a.jpg" alt="3BHK Unit Room 1 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/room1b.jpg" alt="3BHK Unit Room 1 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/room1c.jpg" alt="3BHK Unit Room 1 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+              </div>
+              <button class="carousel-btn prev" aria-label="Previous photo" data-track="apt3bhkRoom1Track">&#8592;</button>
+              <button class="carousel-btn next" aria-label="Next photo" data-track="apt3bhkRoom1Track">&#8594;</button>
+              <div class="carousel-dots" id="apt3bhkRoom1Dots"></div>
+            </div>
+            <div class="room-info">
+              <span class="room-stay-badge">APARTMENT STAY</span>
+              <div class="room-top">
+                <h3 class="room-name">3BHK Unit — Room 1</h3>
+                <div class="room-price"><span class="price-tag">Price on Request</span></div>
+              </div>
+              <p class="room-desc">A premium room inside the 3BHK unit with comfortable bedding, warm interiors, and a relaxed apartment-stay feel.</p>
+              <div class="amenities-row">
+                <span class="amenity-chip">Air Conditioning</span>
+                <span class="amenity-chip">Large Bed</span>
+                <span class="amenity-chip">Bathroom Access</span>
+                <span class="amenity-chip">Towels</span>
+                <span class="amenity-chip">Apartment Stay</span>
+                <span class="amenity-chip">Comfortable Interiors</span>
+              </div>
+              <div class="room-actions-row">
+                <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="3BHK Room 1" id="bookApt3bhkRoom1Btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Book This Room
+                </button>
+                <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Call to Book
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: 3BHK Unit — Room 2 -->
+          <div class="room-card glass-card" id="roomApt3bhkRoom2" data-animate="fade-up">
+            <div class="room-carousel" data-room="apt-3bhk-room2">
+              <div class="carousel-track" id="apt3bhkRoom2Track">
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/room2a.jpg" alt="3BHK Unit Room 2 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/room2b.jpg" alt="3BHK Unit Room 2 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/room2c.jpg" alt="3BHK Unit Room 2 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+              </div>
+              <button class="carousel-btn prev" aria-label="Previous photo" data-track="apt3bhkRoom2Track">&#8592;</button>
+              <button class="carousel-btn next" aria-label="Next photo" data-track="apt3bhkRoom2Track">&#8594;</button>
+              <div class="carousel-dots" id="apt3bhkRoom2Dots"></div>
+            </div>
+            <div class="room-info">
+              <span class="room-stay-badge">APARTMENT STAY</span>
+              <div class="room-top">
+                <h3 class="room-name">3BHK Unit — Room 2</h3>
+                <div class="room-price"><span class="price-tag">Price on Request</span></div>
+              </div>
+              <p class="room-desc">A comfortable second room inside the 3BHK unit, perfect for families, friends, and longer stays.</p>
+              <div class="amenities-row">
+                <span class="amenity-chip">Air Conditioning</span>
+                <span class="amenity-chip">Large Bed</span>
+                <span class="amenity-chip">Bathroom Access</span>
+                <span class="amenity-chip">Towels</span>
+                <span class="amenity-chip">Apartment Stay</span>
+                <span class="amenity-chip">Comfortable Interiors</span>
+              </div>
+              <div class="room-actions-row">
+                <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="3BHK Room 2" id="bookApt3bhkRoom2Btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Book This Room
+                </button>
+                <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Call to Book
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: 3BHK Unit — Room 3 -->
+          <div class="room-card glass-card room-card-reverse" id="roomApt3bhkRoom3" data-animate="fade-up">
+            <div class="room-carousel" data-room="apt-3bhk-room3">
+              <div class="carousel-track" id="apt3bhkRoom3Track">
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/room3a.jpg" alt="3BHK Unit Room 3 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/room3b.jpg" alt="3BHK Unit Room 3 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
+                <div class="carousel-slide"><img src="photos/apartment/3bhk unit 2/room3c.jpg" alt="3BHK Unit Room 3 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
+              </div>
+              <button class="carousel-btn prev" aria-label="Previous photo" data-track="apt3bhkRoom3Track">&#8592;</button>
+              <button class="carousel-btn next" aria-label="Next photo" data-track="apt3bhkRoom3Track">&#8594;</button>
+              <div class="carousel-dots" id="apt3bhkRoom3Dots"></div>
+            </div>
+            <div class="room-info">
+              <span class="room-stay-badge">APARTMENT STAY</span>
+              <div class="room-top">
+                <h3 class="room-name">3BHK Unit — Room 3</h3>
+                <div class="room-price"><span class="price-tag">Price on Request</span></div>
+              </div>
+              <p class="room-desc">A peaceful third room inside the 3BHK apartment with simple luxury, privacy, and a comfortable stay experience.</p>
+              <div class="amenities-row">
+                <span class="amenity-chip">Air Conditioning</span>
+                <span class="amenity-chip">Large Bed</span>
+                <span class="amenity-chip">Bathroom Access</span>
+                <span class="amenity-chip">Towels</span>
+                <span class="amenity-chip">Apartment Stay</span>
+                <span class="amenity-chip">Comfortable Interiors</span>
+              </div>
+              <div class="room-actions-row">
+                <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="3BHK Room 3" id="bookApt3bhkRoom3Btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Book This Room
+                </button>
+                <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  Call to Book
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Room: Room 3 -->
-      <div class="room-card glass-card" id="roomFfBalcony" data-animate="fade-up">
-        <div class="room-carousel" data-room="ff-balcony">
-          <div class="carousel-track" id="ffBalconyTrack">
-            <div class="carousel-slide"><img src="photos/firstfloorroomwithbalcony.png" alt="Room 3 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
-            <div class="carousel-slide"><img src="photos/firstfloorroomwithbalcony2.png" alt="Room 3 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
-            <div class="carousel-slide"><img src="photos/firstfloorroomwithbalcony3.png" alt="Room 3 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
-          </div>
-          <button class="carousel-btn prev" aria-label="Previous photo" data-track="ffBalconyTrack">&#8592;</button>
-          <button class="carousel-btn next" aria-label="Next photo" data-track="ffBalconyTrack">&#8594;</button>
-          <div class="carousel-dots" id="ffBalconyDots"></div>
-        </div>
-        <div class="room-info">
-          <div class="room-top">
-            <h3 class="room-name">Room 3</h3>
-            <div class="room-price"><span class="price-tag">₹3,000</span><span class="price-night">/Night</span></div>
-          </div>
-          <p class="room-desc">A premium room with warm interiors and a calm atmosphere, perfect for a comfortable luxury stay.</p>
-          <div class="amenities-row">
-            <span class="amenity-chip">Air Conditioning</span>
-            <span class="amenity-chip">Large Bed</span>
-            <span class="amenity-chip">Attached Bathroom</span>
-            <span class="amenity-chip">Towels</span>
-            <span class="amenity-chip">Premium Interiors</span>
-            <span class="amenity-chip">Peaceful Stay</span>
-          </div>
-          <div class="room-actions-row">
-            <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="Room 3" id="bookFfBalconyBtn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Book Room 3
-            </button>
-            <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              Call to Book
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Room: Room 4 -->
-      <div class="room-card glass-card room-card-reverse" id="roomFfNoBalcony" data-animate="fade-up">
-        <div class="room-carousel" data-room="ff-nobalcony">
-          <div class="carousel-track" id="ffNoBalconyTrack">
-            <div class="carousel-slide"><img src="photos/withoutbalconyfirstfloor1.png" alt="Room 4 View 1" loading="lazy" decoding="async" width="800" height="600" /></div>
-            <div class="carousel-slide"><img src="photos/withoutbalconyfirstfloor2.png" alt="Room 4 View 2" loading="lazy" decoding="async" width="800" height="600" /></div>
-            <div class="carousel-slide"><img src="photos/withoutbalconyfirstfloor3.png" alt="Room 4 View 3" loading="lazy" decoding="async" width="800" height="600" /></div>
-          </div>
-          <button class="carousel-btn prev" aria-label="Previous photo" data-track="ffNoBalconyTrack">&#8592;</button>
-          <button class="carousel-btn next" aria-label="Next photo" data-track="ffNoBalconyTrack">&#8594;</button>
-          <div class="carousel-dots" id="ffNoBalconyDots"></div>
-        </div>
-        <div class="room-info">
-          <div class="room-top">
-            <h3 class="room-name">Room 4</h3>
-            <div class="room-price"><span class="price-tag">₹2,600</span><span class="price-night">/Night</span></div>
-          </div>
-          <p class="room-desc">A clean, elegant, and comfortable room designed for guests looking for the best-value premium stay.</p>
-          <div class="amenities-row">
-            <span class="amenity-chip">Air Conditioning</span>
-            <span class="amenity-chip">Large Bed</span>
-            <span class="amenity-chip">Attached Bathroom</span>
-            <span class="amenity-chip">Towels</span>
-            <span class="amenity-chip">Cozy Interior</span>
-            <span class="amenity-chip">Best Value Stay</span>
-          </div>
-          <div class="room-actions-row">
-            <button class="btn btn-lime btn-room btn-book-room-trigger" data-room-name="Room 4" id="bookFfNoBalconyBtn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Book Room 4
-            </button>
-            <a href="tel:+919864323486" class="btn btn-outline-navy btn-room">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              Call to Book
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -777,32 +1133,48 @@
         <span class="modal-badge-lime">10% OFF Launch Offer</span>
       </div>
       
-      <div class="modal-header">
-        <span class="modal-brand">The Castleton Mansion</span>
-        <h2 class="modal-title-text" id="modalTitle">Book Your Stay</h2>
-        <p class="modal-subtext" id="modalSubtext">Choose your preferred booking option. For urgent availability, call us directly.</p>
+      <!-- STEP 1: Property Selection (for general bookings) -->
+      <div id="modalStepPropertySelect" class="modal-step hidden">
+        <div class="modal-header">
+          <span class="modal-brand">The Castleton</span>
+          <h2 class="modal-title-text">Which stay do you want to book?</h2>
+          <p class="modal-subtext">Select your preferred stay type to continue booking.</p>
+        </div>
+        <div class="modal-property-options">
+          <button class="btn btn-lime modal-prop-btn" id="modalSelectMansionBtn">Castleton Mansion</button>
+          <button class="btn btn-lime modal-prop-btn" id="modalSelectApartmentBtn">Castleton Apartment</button>
+        </div>
       </div>
       
-      <div class="modal-options">
-        <a href="https://wa.me/919864323486?text=Hi%2C%20I%20want%20to%20book%20a%20stay%20at%20The%20Castleton%20Mansion.%20Please%20share%20availability." target="_blank" rel="noopener" class="modal-opt-btn btn-whatsapp" id="modalWhatsappOpt">
-          <div class="btn-opt-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </div>
-          <div class="btn-opt-text-wrap">
-            <span class="btn-opt-title">Book on WhatsApp</span>
-            <span class="btn-opt-subtitle">Chat with us and confirm availability</span>
-          </div>
-        </a>
+      <!-- STEP 2: Contact Options -->
+      <div id="modalStepContactOptions" class="modal-step">
+        <div class="modal-header">
+          <span class="modal-brand" id="modalBrand">The Castleton Mansion</span>
+          <h2 class="modal-title-text" id="modalTitle">Book Your Stay</h2>
+          <p class="modal-subtext" id="modalSubtext">Choose your preferred booking option. For urgent availability, call us directly.</p>
+        </div>
         
-        <a href="tel:+919864323486" class="modal-opt-btn btn-call" id="modalCallOpt">
-          <div class="btn-opt-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div class="btn-opt-text-wrap">
-            <span class="btn-opt-title">Call to Book</span>
-            <span class="btn-opt-subtitle">For urgent booking or quick confirmation</span>
-          </div>
-        </a>
+        <div class="modal-options">
+          <a href="https://wa.me/919864323486?text=Hi%2C%20I%20want%20to%20book%20a%20stay%20at%20The%20Castleton%20Mansion.%20Please%20share%20availability." target="_blank" rel="noopener" class="modal-opt-btn btn-whatsapp" id="modalWhatsappOpt">
+            <div class="btn-opt-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="btn-opt-text-wrap">
+              <span class="btn-opt-title">Book on WhatsApp</span>
+              <span class="btn-opt-subtitle">Chat with us and confirm availability</span>
+            </div>
+          </a>
+          
+          <a href="tel:+919864323486" class="modal-opt-btn btn-call" id="modalCallOpt">
+            <div class="btn-opt-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.12 2.94a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="btn-opt-text-wrap">
+              <span class="btn-opt-title">Call to Book</span>
+              <span class="btn-opt-subtitle">For urgent booking or quick confirmation</span>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>

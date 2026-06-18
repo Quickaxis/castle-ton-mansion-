@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initNavHighlight();
   initImageFallbacks();
+  initRoomsTabSelector();
   initBookingModal();
   initInstagramEmbeds();
 });
@@ -101,6 +102,17 @@ function initCarousels() {
     { track: 'ffBalconyTrack',   dots: 'ffBalconyDots' },
     { track: 'ffNoBalconyTrack', dots: 'ffNoBalconyDots' },
     { track: 'aboutRoomTrack',  dots: 'aboutRoomDots' },
+    
+    // 2BHK Stays
+    { track: 'apt2bhkHallTrack',  dots: 'apt2bhkHallDots' },
+    { track: 'apt2bhkRoom1Track', dots: 'apt2bhkRoom1Dots' },
+    { track: 'apt2bhkRoom2Track', dots: 'apt2bhkRoom2Dots' },
+    
+    // 3BHK Stays
+    { track: 'apt3bhkHallTrack',  dots: 'apt3bhkHallDots' },
+    { track: 'apt3bhkRoom1Track', dots: 'apt3bhkRoom1Dots' },
+    { track: 'apt3bhkRoom2Track', dots: 'apt3bhkRoom2Dots' },
+    { track: 'apt3bhkRoom3Track', dots: 'apt3bhkRoom3Dots' },
   ];
 
   rooms.forEach(room => setupCarousel(room.track, room.dots));
@@ -258,14 +270,107 @@ function initImageFallbacks() {
 // ── SMOOTH SCROLL for internal links ──────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const href = this.getAttribute('href');
+    const target = document.querySelector(href);
     if (!target) return;
     e.preventDefault();
+
+    if (href === '#rooms') {
+      const staySelectorArea = document.getElementById('staySelectorArea');
+      const stayTabsWrap = document.getElementById('stayTabsWrap');
+      const mansionRoomsContainer = document.getElementById('mansionRoomsContainer');
+      const apartmentRoomsContainer = document.getElementById('apartmentRoomsContainer');
+
+      if (selectedStayType) {
+        stayTabsWrap.classList.remove('hidden');
+        if (selectedStayType === 'mansion') {
+          mansionRoomsContainer.classList.remove('hidden');
+          apartmentRoomsContainer.classList.add('hidden');
+        } else {
+          apartmentRoomsContainer.classList.remove('hidden');
+          mansionRoomsContainer.classList.add('hidden');
+        }
+      } else {
+        staySelectorArea.classList.remove('hidden');
+        stayTabsWrap.classList.add('hidden');
+        mansionRoomsContainer.classList.add('hidden');
+        apartmentRoomsContainer.classList.add('hidden');
+      }
+    }
+
     const offset = 100; // account for fixed navbar
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: 'smooth' });
   });
 });
+
+// ── ROOMS TAB SELECTOR ─────────────────────────────────────
+let selectedStayType = null;
+
+function initRoomsTabSelector() {
+  const selectMansionBtn = document.getElementById('selectMansionBtn');
+  const selectApartmentBtn = document.getElementById('selectApartmentBtn');
+  const selectMansionCard = document.getElementById('selectMansionCard');
+  const selectApartmentCard = document.getElementById('selectApartmentCard');
+  
+  const staySelectorArea = document.getElementById('staySelectorArea');
+  const stayTabsWrap = document.getElementById('stayTabsWrap');
+  const mansionRoomsContainer = document.getElementById('mansionRoomsContainer');
+  const apartmentRoomsContainer = document.getElementById('apartmentRoomsContainer');
+  
+  const tabMansion = document.getElementById('tabMansion');
+  const tabApartment = document.getElementById('tabApartment');
+
+  if (!selectMansionBtn || !selectApartmentBtn) return;
+
+  function selectStay(type) {
+    selectedStayType = type;
+
+    if (type === 'mansion') {
+      mansionRoomsContainer.classList.remove('hidden');
+      apartmentRoomsContainer.classList.add('hidden');
+      
+      tabMansion.classList.add('active');
+      tabApartment.classList.remove('active');
+      
+      selectMansionCard.classList.add('selected');
+      selectApartmentCard.classList.remove('selected');
+    } else {
+      apartmentRoomsContainer.classList.remove('hidden');
+      mansionRoomsContainer.classList.add('hidden');
+      
+      tabApartment.classList.add('active');
+      tabMansion.classList.remove('active');
+      
+      selectApartmentCard.classList.add('selected');
+      selectMansionCard.classList.remove('selected');
+    }
+
+    stayTabsWrap.classList.remove('hidden');
+
+    setTimeout(() => {
+      const targetContainer = type === 'mansion' ? mansionRoomsContainer : apartmentRoomsContainer;
+      const offset = 120;
+      const top = targetContainer.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }, 100);
+  }
+
+  selectMansionBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    selectStay('mansion');
+  });
+  selectApartmentBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    selectStay('apartment');
+  });
+
+  selectMansionCard.addEventListener('click', () => selectStay('mansion'));
+  selectApartmentCard.addEventListener('click', () => selectStay('apartment'));
+
+  tabMansion.addEventListener('click', () => selectStay('mansion'));
+  tabApartment.addEventListener('click', () => selectStay('apartment'));
+}
 
 // ── BOOKING MODAL SYSTEM ──────────────────────────────────
 function initBookingModal() {
@@ -273,20 +378,43 @@ function initBookingModal() {
   const closeBtn = document.getElementById('modalCloseBtn');
   const whatsappOpt = document.getElementById('modalWhatsappOpt');
   const modalTitle = document.getElementById('modalTitle');
+  const modalBrand = document.getElementById('modalBrand');
+  const modalSubtext = document.getElementById('modalSubtext');
+  
+  const stepPropertySelect = document.getElementById('modalStepPropertySelect');
+  const stepContactOptions = document.getElementById('modalStepContactOptions');
+  const modalSelectMansionBtn = document.getElementById('modalSelectMansionBtn');
+  const modalSelectApartmentBtn = document.getElementById('modalSelectApartmentBtn');
 
   if (!modal || !closeBtn || !whatsappOpt) return;
 
-  const defaultTitle = "Book Your Stay";
-  const defaultText = "Hi, I want to book a stay at The Castleton Mansion. Please share availability.";
-
   function openModal(roomName = "") {
+    stepPropertySelect.classList.add('hidden');
+    stepContactOptions.classList.remove('hidden');
+
     if (roomName) {
       modalTitle.textContent = `Book ${roomName}`;
-      const text = `Hi, I want to book ${roomName} at The Castleton Mansion. Please share availability.`;
+      
+      const isApartment = roomName.includes('2BHK') || roomName.includes('3BHK');
+      let text = '';
+      if (isApartment) {
+        modalBrand.textContent = "The Castleton Apartment";
+        modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
+        if (roomName.includes('Hall + Dining')) {
+          text = `Hi, I want to book the ${roomName} at The Castleton Apartment. Please share availability.`;
+        } else {
+          text = `Hi, I want to book ${roomName} at The Castleton Apartment. Please share availability.`;
+        }
+      } else {
+        modalBrand.textContent = "The Castleton Mansion";
+        modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
+        text = `Hi, I want to book ${roomName} at The Castleton Mansion. Please share availability.`;
+      }
+      
       whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
     } else {
-      modalTitle.textContent = defaultTitle;
-      whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(defaultText)}`;
+      stepPropertySelect.classList.remove('hidden');
+      stepContactOptions.classList.add('hidden');
     }
     
     modal.classList.add('active');
@@ -294,13 +422,34 @@ function initBookingModal() {
     document.body.style.overflow = 'hidden';
   }
 
+  function selectPropertyType(type) {
+    stepPropertySelect.classList.add('hidden');
+    stepContactOptions.classList.remove('hidden');
+    
+    if (type === 'mansion') {
+      modalBrand.textContent = "The Castleton Mansion";
+      modalTitle.textContent = "Book Your Stay";
+      modalSubtext.textContent = "Choose your preferred booking option. For urgent availability, call us directly.";
+      const text = "Hi, I want to book a stay at The Castleton Mansion. Please share availability.";
+      whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
+    } else {
+      modalBrand.textContent = "The Castleton Apartment";
+      modalTitle.textContent = "Book Your Stay";
+      modalSubtext.textContent = "Choose your preferred booking option. For urgent availability, call us directly.";
+      const text = "Hi, I want to book a stay at The Castleton Apartment. Please share availability.";
+      whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
+    }
+  }
+
+  modalSelectMansionBtn.addEventListener('click', () => selectPropertyType('mansion'));
+  modalSelectApartmentBtn.addEventListener('click', () => selectPropertyType('apartment'));
+
   function closeModal() {
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
 
-  // Bind all trigger buttons across the site
   document.querySelectorAll('.btn-book-trigger').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -308,16 +457,15 @@ function initBookingModal() {
     });
   });
 
-  // Bind room triggers
-  document.querySelectorAll('.btn-book-room-trigger').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.btn-book-room-trigger');
+    if (trigger) {
       e.preventDefault();
-      const roomName = btn.getAttribute('data-room-name');
+      const roomName = trigger.getAttribute('data-room-name');
       openModal(roomName);
-    });
+    }
   });
 
-  // Close triggers
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
@@ -329,7 +477,6 @@ function initBookingModal() {
     }
   });
 
-  // Close modal when an option is selected
   whatsappOpt.addEventListener('click', () => {
     setTimeout(closeModal, 600);
   });
