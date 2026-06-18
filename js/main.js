@@ -400,7 +400,7 @@ function initBookingModal() {
       if (isApartment) {
         modalBrand.textContent = "The Castleton Apartment";
         modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
-        if (roomName.includes('Hall + Dining')) {
+        if (roomName.includes('Apartment')) {
           text = `Hi, I want to book the ${roomName} at The Castleton Apartment. Please share availability.`;
         } else {
           text = `Hi, I want to book ${roomName} at The Castleton Apartment. Please share availability.`;
