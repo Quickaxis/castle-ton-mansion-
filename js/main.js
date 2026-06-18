@@ -238,7 +238,7 @@ function initImageFallbacks() {
     img.addEventListener('error', function () {
       this.style.background = 'linear-gradient(135deg, #e0dfd9 0%, #ebe9e2 50%, #d5d5cb 100%)';
       this.removeAttribute('src');
-      this.setAttribute('alt', this.getAttribute('alt') + ' (photo coming soon)');
+      this.setAttribute('alt', this.getAttribute('alt'));
     });
   });
 
@@ -282,7 +282,7 @@ function initBookingModal() {
   function openModal(roomName = "") {
     if (roomName) {
       modalTitle.textContent = `Book ${roomName}`;
-      const text = `Hi, I want to book the ${roomName} at The Castleton Mansion. Please share availability.`;
+      const text = `Hi, I want to book ${roomName} at The Castleton Mansion. Please share availability.`;
       whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
     } else {
       modalTitle.textContent = defaultTitle;

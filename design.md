@@ -48,10 +48,10 @@
 
 ## 7. Room Categories & Prices
 
-- **Ground Floor Room with Balcony**: ₹3,000
-- **Ground Floor Room without Balcony**: ₹2,800
-- **First Floor Room with Balcony**: ₹3,000
-- **First Floor Room without Balcony**: ₹2,600
+- **Room 1**: ₹3,000
+- **Room 2**: ₹2,800
+- **Room 3**: ₹3,000
+- **Room 4**: ₹2,600
 
 *Launch Offer: 10% off on all bookings*
 
@@ -82,27 +82,27 @@ Room name font:
 
 ## 9. Room Categories, Prices & Descriptions
 
-### Ground Floor Room with Balcony — ₹3,000/Night
+### Room 1 — ₹3,000/Night
 
-A spacious ground floor room with balcony access, designed for guests who want comfort, convenience, and a peaceful stay.
+A spacious and comfortable room designed for a peaceful premium stay with warm interiors and modern comfort.
 
 Suggested amenities:
 
-* Balcony
 * Air Conditioning
 * Large Bed
 * Attached Bathroom
 * Towels
 * Comfortable Interiors
+* Premium Stay Experience
 
 CTA: Book This Room
-WhatsApp: Hi, I want to book the Ground Floor Room with Balcony at The Castleton Mansion. Please share availability.
+WhatsApp: Hi, I want to book Room 1 at The Castleton Mansion. Please share availability.
 
 ---
 
-### Ground Floor Room without Balcony — ₹2,800/Night
+### Room 2 — ₹2,800/Night
 
-A cozy and comfortable ground floor room with premium interiors, perfect for guests who prefer easy access and a relaxed stay.
+A cozy and elegant room made for guests who want comfort, privacy, and a relaxed mansion-style stay.
 
 Suggested amenities:
 
@@ -114,31 +114,31 @@ Suggested amenities:
 * Premium Stay Experience
 
 CTA: Book This Room
-WhatsApp: Hi, I want to book the Ground Floor Room without Balcony at The Castleton Mansion. Please share availability.
+WhatsApp: Hi, I want to book Room 2 at The Castleton Mansion. Please share availability.
 
 ---
 
-### First Floor Room with Balcony — ₹3,000/Night
+### Room 3 — ₹3,000/Night
 
-A premium first floor room with balcony access, warm interiors, and a peaceful atmosphere for a comfortable luxury stay.
+A premium room with warm interiors and a calm atmosphere, perfect for a comfortable luxury stay.
 
 Suggested amenities:
 
-* Balcony
 * Air Conditioning
 * Large Bed
 * Attached Bathroom
 * Towels
 * Premium Interiors
+* Peaceful Stay
 
 CTA: Book This Room
-WhatsApp: Hi, I want to book the First Floor Room with Balcony at The Castleton Mansion. Please share availability.
+WhatsApp: Hi, I want to book Room 3 at The Castleton Mansion. Please share availability.
 
 ---
 
-### First Floor Room without Balcony — ₹2,600/Night
+### Room 4 — ₹2,600/Night
 
-A well-designed first floor room made for guests who want a clean, elegant, and comfortable stay at the best starting price.
+A clean, elegant, and comfortable room designed for guests looking for the best-value premium stay.
 
 Suggested amenities:
 
@@ -150,7 +150,7 @@ Suggested amenities:
 * Best Value Stay
 
 CTA: Book This Room
-WhatsApp: Hi, I want to book the First Floor Room without Balcony at The Castleton Mansion. Please share availability.
+WhatsApp: Hi, I want to book Room 4 at The Castleton Mansion. Please share availability.
 
 ## 10. Room Pricing Style
 
@@ -159,10 +159,10 @@ Use rounded premium pricing instead of odd pricing.
 Original room prices can be hidden.
 Website pricing:
 
-* Ground Floor Room with Balcony: ₹3,000
-* Ground Floor Room without Balcony: ₹2,800
-* First Floor Room with Balcony: ₹3,000
-* First Floor Room without Balcony: ₹2,600
+* Room 1: ₹3,000
+* Room 2: ₹2,800
+* Room 3: ₹3,000
+* Room 4: ₹2,600
 
 Launch Offer:
 Show “10% OFF on all bookings” as a lime announcement badge near the hero section and rooms section.
