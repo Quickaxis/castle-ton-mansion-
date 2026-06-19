@@ -2180,16 +2180,23 @@ img:not([src]), img[src=""] {
   .about-inner { flex-direction: column; gap: 48px; }
   .about-text { width: 100%; }
   .about-visual { width: 100%; }
-  .room-card { grid-template-columns: 1fr; min-height: unset; }
+  .room-card {
+    grid-template-columns: 1fr;
+    min-height: unset;
+    margin-bottom: 32px !important;
+  }
   .room-card-reverse { grid-template-columns: 1fr; }
   .room-card-reverse .room-carousel { order: 0; }
   .room-card-reverse .room-info { order: 0; }
-  .room-carousel {
+  .room-carousel, .apartment-card .room-carousel {
     border-radius: 36px 36px 0 0 !important;
-    min-height: 360px;
+    height: clamp(420px, 45vh, 520px) !important;
+    min-height: 420px !important;
   }
-  .carousel-slide img { min-height: 360px; }
-  .room-info { padding: 40px 40px; }
+  .carousel-slide img {
+    min-height: 420px !important;
+  }
+  .room-info { padding: 32px !important; }
   .room-header {
     flex-direction: column;
     align-items: flex-start;
@@ -2441,18 +2448,150 @@ img:not([src]), img[src=""] {
   .about-highlight-box { padding: 16px 18px; margin-bottom: 28px; }
   .about-img-wrap { height: 320px; }
   .about-img-secondary { height: clamp(280px, 45vw, 360px); }
-  .room-info { padding: 28px 24px; }
+  /* Compact Mobile Cards & Spacings */
+  .room-card, .apartment-card, #roomBeeDeeLodge {
+    height: auto !important;
+    min-height: unset !important;
+    margin-bottom: 24px !important;
+  }
+  .room-carousel, .apartment-card .room-carousel {
+    height: clamp(280px, 48vh, 420px) !important;
+    min-height: unset !important;
+  }
+  #roomBeeDeeLodge .room-carousel, .bee-dee-carousel {
+    height: clamp(300px, 52vh, 440px) !important;
+  }
+  .carousel-slide img {
+    min-height: unset !important;
+    height: 100% !important;
+  }
+  .room-info {
+    padding: 20px !important;
+    gap: 14px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
   .room-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+  }
+  .room-title-area {
+    gap: 4px !important;
+  }
+  .room-price-badge {
+    font-size: 15px !important;
+    padding: 6px 12px !important;
+    margin-top: 4px !important;
+  }
+  .room-desc {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 0 !important;
+  }
+  .amenities-row {
+    margin-bottom: 0 !important;
+    gap: 6px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+  }
+  .amenity-chip {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+    border-radius: 999px !important;
+    gap: 6px !important;
+    line-height: 1.2 !important;
+  }
+  .mobile-hide {
+    display: none !important;
+  }
+  .apartment-divider {
+    margin: 12px 0 !important;
+  }
+  .apt-price-display {
+    margin-bottom: 0 !important;
+    gap: 8px !important;
+    display: flex !important;
+    align-items: baseline !important;
+  }
+  .apt-price-display .price-final {
+    font-size: 28px !important;
+  }
+  .pref-selector-wrap {
+    margin-bottom: 0 !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+  .pref-label {
+    font-size: 11px !important;
+    margin-bottom: 0 !important;
+  }
+  .pref-buttons {
+    gap: 8px !important;
+  }
+  .pref-btn {
+    height: 46px !important;
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+    line-height: 1.2 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .pref-note {
+    font-size: 12px !important;
+    margin-bottom: 0 !important;
+  }
+  .btn-confirm-whatsapp {
+    height: 52px !important;
+    margin-top: 4px !important;
+    font-size: 13px !important;
+    padding: 12px 24px !important;
   }
   .room-actions-row {
-    flex-direction: column;
-    gap: 8px;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 4px !important;
   }
   .room-actions-row .btn-room {
-    width: 100%;
+    width: 100% !important;
+    height: 50px !important;
+    font-size: 13px !important;
+    padding: 10px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+  }
+  .additional-charges-box {
+    margin-bottom: 0 !important;
+    padding: 12px 14px !important;
+    border-radius: 16px !important;
+  }
+  .charges-title-wrap {
+    margin-bottom: 8px !important;
+  }
+  .charges-title {
+    font-size: 13px !important;
+  }
+  .charges-list {
+    gap: 8px !important;
+  }
+  .charge-label, .charge-value {
+    font-size: 12px !important;
+  }
+  .charge-note {
+    font-size: 11px !important;
+    margin-top: 2px !important;
   }
   .amenities-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .gallery-grid {
@@ -3266,7 +3405,7 @@ section:not(.hero) {
   
   #roomBeeDeeLodge .room-carousel {
     width: 100% !important;
-    height: clamp(380px, 68vh, 560px) !important;
+    height: clamp(300px, 52vh, 440px) !important;
     min-height: unset !important;
     border-radius: 32px 32px 0 0 !important; /* image carousel first, top rounded corners */
     overflow: hidden !important;
@@ -3305,7 +3444,7 @@ section:not(.hero) {
   
   #roomBeeDeeLodge .room-info {
     width: 100% !important;
-    padding: 24px 16px !important; /* content below */
+    padding: 20px !important; /* content below */
     box-sizing: border-box !important;
   }
 
