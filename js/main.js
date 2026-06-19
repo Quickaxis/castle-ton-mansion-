@@ -396,7 +396,7 @@ function initBookingModal() {
         modalBrand.textContent = "The Castleton Apartment";
         modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
         if (unitNum) {
-          const activeOption = document.querySelector(`#unit${unitNum}Selector .occupancy-option.active`);
+          const activeOption = document.querySelector(`#unit${unitNum}PrefSelector .pref-btn.active`);
           text = activeOption ? activeOption.getAttribute('data-msg') : '';
         } else {
           if (roomName.includes('Apartment')) {
@@ -537,19 +537,39 @@ function loadInstagramScript() {
 
 // ── OCCUPANCY/PREFERENCE SELECTORS ─────────────────────────
 function initOccupancySelectors() {
-  const options = document.querySelectorAll('.occupancy-option');
-  options.forEach(opt => {
-    opt.addEventListener('click', (e) => {
-      const parent = opt.closest('.occupancy-selector-group');
-      if (!parent) return;
+  const prefButtons = document.querySelectorAll('.pref-btn');
+  prefButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const parentSelector = btn.closest('.pref-buttons');
+      if (!parentSelector) return;
       
-      // Remove active from all options in this group
-      parent.querySelectorAll('.occupancy-option').forEach(item => {
+      // Remove active class from all buttons in this selector group
+      parentSelector.querySelectorAll('.pref-btn').forEach(item => {
         item.classList.remove('active');
       });
       
-      // Add active to clicked option
-      opt.classList.add('active');
+      // Add active class to clicked button
+      btn.classList.add('active');
+      
+      // Find parent room-card/apartment-card to update price and note dynamically
+      const card = btn.closest('.room-card');
+      if (!card) return;
+      
+      const oldPrice = btn.getAttribute('data-old-price');
+      const finalPrice = btn.getAttribute('data-final-price');
+      const note = btn.getAttribute('data-note');
+      
+      // Update prices
+      const priceOldEl = card.querySelector('.price-old');
+      const priceFinalEl = card.querySelector('.price-final');
+      if (priceOldEl) priceOldEl.textContent = oldPrice;
+      if (priceFinalEl) priceFinalEl.textContent = finalPrice;
+      
+      // Update note
+      const noteEl = card.querySelector('.pref-note');
+      if (noteEl) {
+        noteEl.textContent = note;
+      }
     });
   });
 }

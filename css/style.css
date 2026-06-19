@@ -2845,8 +2845,8 @@ section:not(.hero) {
 
 /* Apartment Card & Carousel Layout Overrides */
 .apartment-card {
-  height: 640px; /* fixed height around 520px to 680px */
-  min-height: 580px;
+  height: auto;
+  min-height: 640px;
 }
 
 .apartment-card .room-info {
@@ -2922,88 +2922,140 @@ section:not(.hero) {
   color: var(--navy);
 }
 
-/* Occupancy & Pricing Selector */
-.occupancy-selector-group {
+/* Apartment Divider */
+.apartment-divider {
+  border: none;
+  border-top: 1px solid rgba(18, 50, 74, 0.12);
+  margin: 18px 0;
+  width: 100%;
+}
+
+/* Price Display Area */
+.apt-price-display {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.apt-price-display .price-old {
+  font-size: 1.1rem;
+  text-decoration: line-through;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.apt-price-display .price-final-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.apt-price-display .price-final {
+  font-size: clamp(28px, 4vw, 34px);
+  font-weight: 900;
+  color: var(--navy);
+  position: relative;
+  line-height: 1;
+  display: inline-block;
+  background: linear-gradient(180deg, transparent 65%, rgba(223, 255, 63, 0.85) 65%);
+  padding: 0 2px;
+}
+
+.apt-price-display .price-unit {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* Preference Selector */
+.pref-selector-wrap {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   width: 100%;
-  margin: 16px 0 20px;
+  margin-bottom: 12px;
 }
 
-.occupancy-option {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  border-radius: 18px;
-  border: 2px solid rgba(18, 50, 74, 0.12);
-  background: rgba(255, 255, 255, 0.65);
+.pref-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.pref-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.pref-btn {
+  background: #ffffff;
+  color: var(--navy);
+  border: 2px solid rgba(18, 50, 74, 0.15);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 100%;
-  color: var(--dark);
+  transition: all var(--transition);
+  text-align: center;
+  outline: none;
 }
 
-.occupancy-option:hover {
+.pref-btn:hover {
   border-color: var(--navy);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--ivory-dark);
 }
 
-.occupancy-option.active {
-  background: var(--navy);
-  border-color: var(--navy);
+.pref-btn.active {
+  background: #0E1724;
+  border-color: #0E1724;
   color: #ffffff;
   box-shadow: var(--shadow-sm);
 }
 
-.occupancy-option .option-details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  text-align: left;
-}
-
-.occupancy-option .option-label {
-  font-size: 0.95rem;
-  font-weight: 800;
-}
-
-.occupancy-option .option-subtext {
-  font-size: 0.78rem;
+/* Preference Note */
+.pref-note {
+  font-size: 0.8rem;
   color: var(--muted);
   font-weight: 600;
+  margin-bottom: 18px;
+  font-style: italic;
 }
 
-.occupancy-option.active .option-subtext {
-  color: rgba(255, 255, 255, 0.7);
+/* Confirm WhatsApp Button */
+.btn-confirm-whatsapp {
+  background: #DFFF3F !important;
+  color: #101010 !important;
+  border-radius: 999px !important;
+  padding: 16px 28px !important;
+  font-weight: 900 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 20px rgba(223, 255, 63, 0.35) !important;
+  transition: all var(--transition) !important;
+  width: 100% !important;
+  justify-content: center !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
-.occupancy-option .option-price {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.btn-confirm-whatsapp:hover {
+  background: #C5EE2A !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 30px rgba(223, 255, 63, 0.5) !important;
 }
 
-.occupancy-option .price-old {
-  font-size: 0.88rem;
-  text-decoration: line-through;
-  color: var(--muted);
-}
-
-.occupancy-option.active .price-old {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.occupancy-option .price-final {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--navy);
-}
-
-.occupancy-option.active .price-final {
-  color: var(--lime);
+.btn-confirm-whatsapp:active {
+  transform: translateY(-1px) !important;
 }
 
 /* Responsive Overrides for Apartments */
@@ -3023,6 +3075,18 @@ section:not(.hero) {
   .apartment-card .btn-room {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .pref-buttons {
+    grid-template-columns: 1fr 1fr; /* segmented preference buttons must be two-column on mobile */
+    gap: 8px;
+  }
+  .pref-btn {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
   }
 }
 
