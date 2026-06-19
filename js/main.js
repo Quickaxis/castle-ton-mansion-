@@ -101,6 +101,7 @@ function initCarousels() {
     { track: 'gfNoBalconyTrack', dots: 'gfNoBalconyDots' },
     { track: 'ffBalconyTrack',   dots: 'ffBalconyDots' },
     { track: 'ffNoBalconyTrack', dots: 'ffNoBalconyDots' },
+    { track: 'room5Track',       dots: 'room5Dots' },
     { track: 'aboutRoomTrack',  dots: 'aboutRoomDots' },
     
     // Apartment Units
@@ -458,7 +459,19 @@ function initBookingModal() {
       } else {
         modalBrand.textContent = "The Castleton Mansion";
         modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
-        text = `Hi, I want to book ${roomName} at The Castleton Mansion. Please share availability.`;
+        
+        let price = '';
+        if (roomName === 'Mansion Room 1') price = '₹3,000';
+        else if (roomName === 'Mansion Room 2') price = '₹2,800';
+        else if (roomName === 'Mansion Room 3') price = '₹3,000';
+        else if (roomName === 'Mansion Room 4') price = '₹2,600';
+        else if (roomName === 'Mansion Room 5') price = '₹3,000';
+        
+        if (price) {
+          text = `Hi, I want to book ${roomName} at The Castleton Mansion. Please confirm availability. Price shown is ${price} per night.`;
+        } else {
+          text = `Hi, I want to book ${roomName} at The Castleton Mansion. Please share availability.`;
+        }
       }
       
       whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
