@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initImageFallbacks();
   initRoomsTabSelector();
   initBookingModal();
-  initInstagramEmbeds();
   initOccupancySelectors();
 });
 
@@ -108,6 +107,9 @@ function initCarousels() {
     { track: 'aptUnit1Track',  dots: 'aptUnit1Dots' },
     { track: 'aptUnit2Track',  dots: 'aptUnit2Dots' },
     { track: 'aptUnit3Track',  dots: 'aptUnit3Dots' },
+    
+    // Lodge Rooms
+    { track: 'beeDeeLodgeTrack', dots: 'beeDeeLodgeDots' },
   ];
 
   rooms.forEach(room => setupCarousel(room.track, room.dots));
@@ -275,21 +277,29 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       const stayTabsWrap = document.getElementById('stayTabsWrap');
       const mansionRoomsContainer = document.getElementById('mansionRoomsContainer');
       const apartmentRoomsContainer = document.getElementById('apartmentRoomsContainer');
+      const lodgeRoomsContainer = document.getElementById('lodgeRoomsContainer');
 
       if (selectedStayType) {
         stayTabsWrap.classList.remove('hidden');
         if (selectedStayType === 'mansion') {
           mansionRoomsContainer.classList.remove('hidden');
           apartmentRoomsContainer.classList.add('hidden');
-        } else {
+          lodgeRoomsContainer.classList.add('hidden');
+        } else if (selectedStayType === 'apartment') {
           apartmentRoomsContainer.classList.remove('hidden');
           mansionRoomsContainer.classList.add('hidden');
+          lodgeRoomsContainer.classList.add('hidden');
+        } else if (selectedStayType === 'lodge') {
+          lodgeRoomsContainer.classList.remove('hidden');
+          mansionRoomsContainer.classList.add('hidden');
+          apartmentRoomsContainer.classList.add('hidden');
         }
       } else {
         staySelectorArea.classList.remove('hidden');
         stayTabsWrap.classList.add('hidden');
         mansionRoomsContainer.classList.add('hidden');
         apartmentRoomsContainer.classList.add('hidden');
+        lodgeRoomsContainer.classList.add('hidden');
       }
     }
 
@@ -305,18 +315,22 @@ let selectedStayType = null;
 function initRoomsTabSelector() {
   const selectMansionBtn = document.getElementById('selectMansionBtn');
   const selectApartmentBtn = document.getElementById('selectApartmentBtn');
+  const selectLodgeBtn = document.getElementById('selectLodgeBtn');
   const selectMansionCard = document.getElementById('selectMansionCard');
   const selectApartmentCard = document.getElementById('selectApartmentCard');
+  const selectLodgeCard = document.getElementById('selectLodgeCard');
   
   const staySelectorArea = document.getElementById('staySelectorArea');
   const stayTabsWrap = document.getElementById('stayTabsWrap');
   const mansionRoomsContainer = document.getElementById('mansionRoomsContainer');
   const apartmentRoomsContainer = document.getElementById('apartmentRoomsContainer');
+  const lodgeRoomsContainer = document.getElementById('lodgeRoomsContainer');
   
   const tabMansion = document.getElementById('tabMansion');
   const tabApartment = document.getElementById('tabApartment');
+  const tabLodge = document.getElementById('tabLodge');
 
-  if (!selectMansionBtn || !selectApartmentBtn) return;
+  if (!selectMansionBtn || !selectApartmentBtn || !selectLodgeBtn) return;
 
   function selectStay(type) {
     selectedStayType = type;
@@ -324,27 +338,49 @@ function initRoomsTabSelector() {
     if (type === 'mansion') {
       mansionRoomsContainer.classList.remove('hidden');
       apartmentRoomsContainer.classList.add('hidden');
+      lodgeRoomsContainer.classList.add('hidden');
       
       tabMansion.classList.add('active');
       tabApartment.classList.remove('active');
+      tabLodge.classList.remove('active');
       
       selectMansionCard.classList.add('selected');
       selectApartmentCard.classList.remove('selected');
-    } else {
+      selectLodgeCard.classList.remove('selected');
+    } else if (type === 'apartment') {
       apartmentRoomsContainer.classList.remove('hidden');
       mansionRoomsContainer.classList.add('hidden');
+      lodgeRoomsContainer.classList.add('hidden');
       
       tabApartment.classList.add('active');
       tabMansion.classList.remove('active');
+      tabLodge.classList.remove('active');
       
       selectApartmentCard.classList.add('selected');
       selectMansionCard.classList.remove('selected');
+      selectLodgeCard.classList.remove('selected');
+    } else if (type === 'lodge') {
+      lodgeRoomsContainer.classList.remove('hidden');
+      mansionRoomsContainer.classList.add('hidden');
+      apartmentRoomsContainer.classList.add('hidden');
+      
+      tabLodge.classList.add('active');
+      tabMansion.classList.remove('active');
+      tabApartment.classList.remove('active');
+      
+      selectLodgeCard.classList.add('selected');
+      selectMansionCard.classList.remove('selected');
+      selectApartmentCard.classList.remove('selected');
     }
 
     stayTabsWrap.classList.remove('hidden');
 
     setTimeout(() => {
-      const targetContainer = type === 'mansion' ? mansionRoomsContainer : apartmentRoomsContainer;
+      let targetContainer;
+      if (type === 'mansion') targetContainer = mansionRoomsContainer;
+      else if (type === 'apartment') targetContainer = apartmentRoomsContainer;
+      else if (type === 'lodge') targetContainer = lodgeRoomsContainer;
+      
       const offset = 120;
       const top = targetContainer.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
@@ -359,12 +395,18 @@ function initRoomsTabSelector() {
     e.stopPropagation();
     selectStay('apartment');
   });
+  selectLodgeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    selectStay('lodge');
+  });
 
   selectMansionCard.addEventListener('click', () => selectStay('mansion'));
   selectApartmentCard.addEventListener('click', () => selectStay('apartment'));
+  selectLodgeCard.addEventListener('click', () => selectStay('lodge'));
 
   tabMansion.addEventListener('click', () => selectStay('mansion'));
   tabApartment.addEventListener('click', () => selectStay('apartment'));
+  tabLodge.addEventListener('click', () => selectStay('lodge'));
 }
 
 // ── BOOKING MODAL SYSTEM ──────────────────────────────────
@@ -380,17 +422,24 @@ function initBookingModal() {
   const stepContactOptions = document.getElementById('modalStepContactOptions');
   const modalSelectMansionBtn = document.getElementById('modalSelectMansionBtn');
   const modalSelectApartmentBtn = document.getElementById('modalSelectApartmentBtn');
+  const modalSelectLodgeBtn = document.getElementById('modalSelectLodgeBtn');
+  
+  const modalStepLodgePreference = document.getElementById('modalStepLodgePreference');
+  const modalLodgeSelectNonAcBtn = document.getElementById('modalLodgeSelectNonAcBtn');
+  const modalLodgeSelectAcBtn = document.getElementById('modalLodgeSelectAcBtn');
 
   if (!modal || !closeBtn || !whatsappOpt) return;
 
   function openModal(roomName = "", unitNum = null) {
     stepPropertySelect.classList.add('hidden');
+    if (modalStepLodgePreference) modalStepLodgePreference.classList.add('hidden');
     stepContactOptions.classList.remove('hidden');
 
     if (roomName) {
       modalTitle.textContent = `Book ${roomName}`;
       
-      const isApartment = unitNum !== null || roomName.includes('2BHK') || roomName.includes('3BHK');
+      const isApartment = unitNum !== null && unitNum !== 'Lodge' && (roomName.includes('2BHK') || roomName.includes('3BHK') || roomName.includes('Apartment'));
+      const isLodge = unitNum === 'Lodge';
       let text = '';
       if (isApartment) {
         modalBrand.textContent = "The Castleton Apartment";
@@ -399,12 +448,13 @@ function initBookingModal() {
           const activeOption = document.querySelector(`#unit${unitNum}PrefSelector .pref-btn.active`);
           text = activeOption ? activeOption.getAttribute('data-msg') : '';
         } else {
-          if (roomName.includes('Apartment')) {
-            text = `Hi, I want to book the ${roomName} at The Castleton Apartment. Please share availability.`;
-          } else {
-            text = `Hi, I want to book ${roomName} at The Castleton Apartment. Please share availability.`;
-          }
+          text = `Hi, I want to book ${roomName} at The Castleton Apartment. Please share availability.`;
         }
+      } else if (isLodge) {
+        modalBrand.textContent = "Bee Dee Lodge";
+        modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
+        const activeOption = document.querySelector(`#unitLodgePrefSelector .pref-btn.active`);
+        text = activeOption ? activeOption.getAttribute('data-msg') : '';
       } else {
         modalBrand.textContent = "The Castleton Mansion";
         modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
@@ -424,30 +474,64 @@ function initBookingModal() {
 
   function selectPropertyType(type) {
     stepPropertySelect.classList.add('hidden');
+    
+    if (type === 'lodge') {
+      if (modalStepLodgePreference) modalStepLodgePreference.classList.remove('hidden');
+      stepContactOptions.classList.add('hidden');
+    } else {
+      if (modalStepLodgePreference) modalStepLodgePreference.classList.add('hidden');
+      stepContactOptions.classList.remove('hidden');
+      
+      if (type === 'mansion') {
+        modalBrand.textContent = "The Castleton Mansion";
+        modalTitle.textContent = "Book Your Stay";
+        modalSubtext.textContent = "Choose your preferred booking option. For urgent availability, call us directly.";
+        const text = "Hi, I want to book a stay at The Castleton Mansion. Please share availability.";
+        whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
+      } else {
+        modalBrand.textContent = "The Castleton Apartment";
+        modalTitle.textContent = "Book Your Stay";
+        modalSubtext.textContent = "Choose your preferred booking option. For urgent availability, call us directly.";
+        const text = "Hi, I want to book a stay at The Castleton Apartment. Please share availability.";
+        whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
+      }
+    }
+  }
+
+  function selectLodgePreference(acType) {
+    if (modalStepLodgePreference) modalStepLodgePreference.classList.add('hidden');
     stepContactOptions.classList.remove('hidden');
     
-    if (type === 'mansion') {
-      modalBrand.textContent = "The Castleton Mansion";
-      modalTitle.textContent = "Book Your Stay";
-      modalSubtext.textContent = "Choose your preferred booking option. For urgent availability, call us directly.";
-      const text = "Hi, I want to book a stay at The Castleton Mansion. Please share availability.";
-      whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
+    modalBrand.textContent = "Bee Dee Lodge";
+    modalTitle.textContent = `Book Bee Dee Lodge Room (${acType === 'ac' ? 'AC' : 'Non AC'})`;
+    modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
+    
+    let text = '';
+    if (acType === 'ac') {
+      text = "Hi, I want to book an AC room at Bee Dee Lodge by The Castleton. Please confirm availability. Price shown is ₹1,800 per night.";
     } else {
-      modalBrand.textContent = "The Castleton Apartment";
-      modalTitle.textContent = "Book Your Stay";
-      modalSubtext.textContent = "Choose your preferred booking option. For urgent availability, call us directly.";
-      const text = "Hi, I want to book a stay at The Castleton Apartment. Please share availability.";
-      whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
+      text = "Hi, I want to book a Non AC room at Bee Dee Lodge by The Castleton. Please confirm availability. Price shown is ₹799 per night.";
     }
+    
+    whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
   }
 
   modalSelectMansionBtn.addEventListener('click', () => selectPropertyType('mansion'));
   modalSelectApartmentBtn.addEventListener('click', () => selectPropertyType('apartment'));
+  if (modalSelectLodgeBtn) modalSelectLodgeBtn.addEventListener('click', () => selectPropertyType('lodge'));
+  
+  if (modalLodgeSelectNonAcBtn) modalLodgeSelectNonAcBtn.addEventListener('click', () => selectLodgePreference('non-ac'));
+  if (modalLodgeSelectAcBtn) modalLodgeSelectAcBtn.addEventListener('click', () => selectLodgePreference('ac'));
 
   function closeModal() {
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    
+    // Reset steps state for next open
+    stepPropertySelect.classList.add('hidden');
+    if (modalStepLodgePreference) modalStepLodgePreference.classList.add('hidden');
+    stepContactOptions.classList.remove('hidden');
   }
 
   document.querySelectorAll('.btn-book-trigger').forEach(btn => {
@@ -490,50 +574,7 @@ function initBookingModal() {
   }
 }
 
-// ── INSTAGRAM LAZY EMBEDS ─────────────────────────────────
-function initInstagramEmbeds() {
-  const instagramSection = document.getElementById('instagram');
-  if (!instagramSection) return;
 
-  // Only load embeds on desktop/tablet (width >= 768px)
-  const isMobile = window.innerWidth < 768;
-  if (isMobile) {
-    instagramSection.classList.add('insta-mobile-fallback');
-    return;
-  }
-
-  // Set up IntersectionObserver to lazy load the script when near viewport
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        loadInstagramScript();
-        observer.disconnect(); // Only run once
-      }
-    });
-  }, { rootMargin: '200px' }); // Load when 200px from viewport
-
-  observer.observe(instagramSection);
-}
-
-function loadInstagramScript() {
-  // Check if script already exists
-  if (document.querySelector('script[src*="instagram.com/embed.js"]')) {
-    if (window.instgrm && window.instgrm.Embeds) {
-      window.instgrm.Embeds.process();
-    }
-    return;
-  }
-
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = 'https://www.instagram.com/embed.js';
-  script.onload = () => {
-    if (window.instgrm && window.instgrm.Embeds) {
-      window.instgrm.Embeds.process();
-    }
-  };
-  document.body.appendChild(script);
-}
 
 // ── OCCUPANCY/PREFERENCE SELECTORS ─────────────────────────
 function initOccupancySelectors() {

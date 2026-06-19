@@ -180,7 +180,7 @@
             <span class="stay-badge">Mansion Stay</span>
             <div>
               <h3 class="stay-card-title">Castleton Mansion Rooms</h3>
-              <p class="stay-card-subtitle">Boutique mansion-style rooms for a peaceful premium stay.</p>
+              <p class="stay-card-subtitle">Boutique mansion style rooms for a peaceful premium stay.</p>
             </div>
             <button class="btn btn-lime btn-stay-select" id="selectMansionBtn">View Mansion Rooms</button>
           </div>
@@ -190,9 +190,19 @@
             <span class="stay-badge">Apartment Stay</span>
             <div>
               <h3 class="stay-card-title">Castleton Apartment Rooms</h3>
-              <p class="stay-card-subtitle">Spacious 2BHK and 3BHK apartment stays for families, groups, and longer visits.</p>
+              <p class="stay-card-subtitle">Spacious apartment stays for families, groups, and longer visits.</p>
             </div>
             <button class="btn btn-lime btn-stay-select" id="selectApartmentBtn">View Apartment Rooms</button>
+          </div>
+
+          <!-- Card 3: Lodge Stay -->
+          <div class="stay-card glass-card" id="selectLodgeCard">
+            <span class="stay-badge">Lodge Stay</span>
+            <div>
+              <h3 class="stay-card-title">Bee Dee Lodge</h3>
+              <p class="stay-card-subtitle">Affordable AC and Non AC lodge rooms presented by The Castleton.</p>
+            </div>
+            <button class="btn btn-lime btn-stay-select" id="selectLodgeBtn">View Bee Dee Lodge</button>
           </div>
         </div>
       </div>
@@ -201,6 +211,7 @@
       <div id="stayTabsWrap" class="stay-tabs-wrap hidden" data-animate="fade-up">
         <button class="stay-tab" id="tabMansion" data-target="mansion">Mansion Rooms</button>
         <button class="stay-tab" id="tabApartment" data-target="apartment">Apartment Rooms</button>
+        <button class="stay-tab" id="tabLodge" data-target="lodge">Bee Dee Lodge</button>
       </div>
 
       <!-- ==================== MANSION ROOMS CONTAINER ==================== -->
@@ -809,6 +820,137 @@
         </div>
       </div>
 
+      <!-- ==================== BEE DEE LODGE CONTAINER ==================== -->
+      <div id="lodgeRoomsContainer" class="rooms-container hidden">
+        <div class="section-header center" data-animate="fade-up">
+          <h2 class="section-heading font-serif font-sans">Bee Dee Lodge</h2>
+          <p class="section-desc">The Castleton presents Bee Dee Lodge, an affordable stay option with AC and Non AC room choices.</p>
+        </div>
+
+        <!-- Card: Bee Dee Lodge Room -->
+        <div class="room-card glass-card apartment-card" id="roomBeeDeeLodge" data-animate="fade-up">
+          <div class="room-carousel" data-room="bee-dee-lodge">
+            <div class="carousel-track" id="beeDeeLodgeTrack">
+              <div class="carousel-slide">
+                <div class="photo-placeholder">
+                  <div class="placeholder-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 47.859 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+                    </svg>
+                  </div>
+                  <span class="placeholder-text">Bee Dee Lodge Photo Space 1</span>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <div class="photo-placeholder">
+                  <div class="placeholder-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 47.859 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+                    </svg>
+                  </div>
+                  <span class="placeholder-text">Bee Dee Lodge Photo Space 2</span>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <div class="photo-placeholder">
+                  <div class="placeholder-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 47.859 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+                    </svg>
+                  </div>
+                  <span class="placeholder-text">Bee Dee Lodge Photo Space 3</span>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <div class="photo-placeholder">
+                  <div class="placeholder-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 47.859 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+                    </svg>
+                  </div>
+                  <span class="placeholder-text">Bee Dee Lodge Photo Space 4</span>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <div class="photo-placeholder">
+                  <div class="placeholder-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 47.859 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
+                    </svg>
+                  </div>
+                  <span class="placeholder-text">Bee Dee Lodge Photo Space 5</span>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-btn prev" aria-label="Previous photo" data-track="beeDeeLodgeTrack">&#8592;</button>
+            <button class="carousel-btn next" aria-label="Next photo" data-track="beeDeeLodgeTrack">&#8594;</button>
+            <div class="carousel-dots" id="beeDeeLodgeDots"></div>
+          </div>
+          <div class="room-info">
+            <span class="room-stay-badge">Lodge Stay</span>
+            <div class="room-header">
+              <div class="room-title-area">
+                <h3 class="room-title">Bee Dee Lodge Room</h3>
+                <span class="room-subtitle">Starting from ₹799 per night</span>
+              </div>
+            </div>
+            <p class="room-desc">A comfortable budget friendly stay option presented by The Castleton, with both AC and Non AC room choices for guests looking for simple and affordable accommodation.</p>
+            <div class="amenities-row">
+              <span class="amenity-chip">Starting from ₹799</span>
+              <span class="amenity-chip">AC Room Available</span>
+              <span class="amenity-chip">Non AC Room Available</span>
+              <span class="amenity-chip">Budget Friendly</span>
+              <span class="amenity-chip">Easy Booking</span>
+              <span class="amenity-chip">Presented by The Castleton</span>
+            </div>
+
+            <hr class="apartment-divider" />
+
+            <!-- Price Display Area -->
+            <div class="apt-price-display">
+              <span class="price-old">₹999</span>
+              <div class="price-final-wrap">
+                <span class="price-final">₹799</span>
+                <span class="price-unit">per night</span>
+              </div>
+            </div>
+
+            <!-- Preference Selector -->
+            <div class="pref-selector-wrap">
+              <span class="pref-label">SELECT PREFERENCE:</span>
+              <div class="pref-buttons" id="unitLodgePrefSelector">
+                <button type="button" class="pref-btn active" 
+                        data-old-price="₹999"
+                        data-final-price="₹799"
+                        data-note=""
+                        data-msg="Hi, I want to book a Non AC room at Bee Dee Lodge by The Castleton. Please confirm availability. Price shown is ₹799 per night.">
+                  Non AC
+                </button>
+                <button type="button" class="pref-btn" 
+                        data-old-price="₹2,000"
+                        data-final-price="₹1,800"
+                        data-note=""
+                        data-msg="Hi, I want to book an AC room at Bee Dee Lodge by The Castleton. Please confirm availability. Price shown is ₹1,800 per night.">
+                  AC
+                </button>
+              </div>
+            </div>
+
+            <!-- Confirm Button -->
+            <div class="room-actions-row">
+              <button class="btn btn-confirm-whatsapp btn-book-room-trigger" data-unit="Lodge" data-room-name="Bee Dee Lodge Room" id="bookLodgeBtn">
+                CONFIRM ON WHATSAPP
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1028,132 +1170,7 @@
     </div>
   </section>
 
-  <!-- ==================== INSTAGRAM ==================== -->
-  <section class="instagram section-pad" id="instagram" aria-label="Instagram Section">
-    <div class="container">
-      <div class="section-header center" data-animate="fade-up">
-        <div class="section-label">INSTAGRAM</div>
-        <h2 class="section-heading">Follow Us on Instagram</h2>
-        <p class="section-desc">See our latest rooms, offers, guest moments, and mansion updates.</p>
-        <div class="insta-header-meta">
-          <span class="insta-handle">@thecastletonmansion</span>
-          <a href="https://www.instagram.com/thecastletonmansion/" target="_blank" rel="noopener" class="btn btn-lime insta-handle-btn" id="instagramBtn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            Visit Instagram
-          </a>
-        </div>
-      </div>
-      <div class="insta-grid" data-animate="fade-up">
-        <!-- Tile 1 -->
-        <div class="insta-tile-wrapper">
-          <a href="https://www.instagram.com/p/DUXUBrIkdty/" target="_blank" rel="noopener" class="insta-fallback-card">
-            <div class="insta-fallback-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </div>
-            <span class="insta-fallback-text">View Post on Instagram</span>
-            <span class="btn btn-lime btn-sm insta-fallback-btn">Visit Post</span>
-          </a>
-          <div class="insta-embed-container">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUXUBrIkdty/" data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
 
-        <!-- Tile 2 -->
-        <div class="insta-tile-wrapper">
-          <a href="https://www.instagram.com/p/DThm5nQD-Ru/" target="_blank" rel="noopener" class="insta-fallback-card">
-            <div class="insta-fallback-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </div>
-            <span class="insta-fallback-text">View Post on Instagram</span>
-            <span class="btn btn-lime btn-sm insta-fallback-btn">Visit Post</span>
-          </a>
-          <div class="insta-embed-container">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DThm5nQD-Ru/" data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-
-        <!-- Tile 3 -->
-        <div class="insta-tile-wrapper">
-          <a href="https://www.instagram.com/p/DTfd9I7E4BC/" target="_blank" rel="noopener" class="insta-fallback-card">
-            <div class="insta-fallback-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </div>
-            <span class="insta-fallback-text">View Post on Instagram</span>
-            <span class="btn btn-lime btn-sm insta-fallback-btn">Visit Post</span>
-          </a>
-          <div class="insta-embed-container">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTfd9I7E4BC/" data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-
-        <!-- Tile 4 -->
-        <div class="insta-tile-wrapper">
-          <a href="https://www.instagram.com/p/DTXqUoEERxI/" target="_blank" rel="noopener" class="insta-fallback-card">
-            <div class="insta-fallback-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </div>
-            <span class="insta-fallback-text">View Post on Instagram</span>
-            <span class="btn btn-lime btn-sm insta-fallback-btn">Visit Post</span>
-          </a>
-          <div class="insta-embed-container">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DTXqUoEERxI/" data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-
-        <!-- Tile 5 -->
-        <div class="insta-tile-wrapper">
-          <a href="https://www.instagram.com/p/DSe9g7ck9RS/" target="_blank" rel="noopener" class="insta-fallback-card">
-            <div class="insta-fallback-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </div>
-            <span class="insta-fallback-text">View Post on Instagram</span>
-            <span class="btn btn-lime btn-sm insta-fallback-btn">Visit Post</span>
-          </a>
-          <div class="insta-embed-container">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSe9g7ck9RS/" data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-
-        <!-- Tile 6 -->
-        <div class="insta-tile-wrapper">
-          <a href="https://www.instagram.com/p/DSXWjYVEkUI/" target="_blank" rel="noopener" class="insta-fallback-card">
-            <div class="insta-fallback-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </div>
-            <span class="insta-fallback-text">View Post on Instagram</span>
-            <span class="btn btn-lime btn-sm insta-fallback-btn">Visit Post</span>
-          </a>
-          <div class="insta-embed-container">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DSXWjYVEkUI/" data-instgrm-version="14"></blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ==================== LOCATION ==================== -->
   <section class="location section-pad" id="location" aria-label="Location Section">
@@ -1271,6 +1288,20 @@
         <div class="modal-property-options">
           <button class="btn btn-lime modal-prop-btn" id="modalSelectMansionBtn">Castleton Mansion</button>
           <button class="btn btn-lime modal-prop-btn" id="modalSelectApartmentBtn">Castleton Apartment</button>
+          <button class="btn btn-lime modal-prop-btn" id="modalSelectLodgeBtn">Bee Dee Lodge</button>
+        </div>
+      </div>
+
+      <!-- STEP 1.5: Lodge Preference Selection (intermediate step for general bookings) -->
+      <div id="modalStepLodgePreference" class="modal-step hidden">
+        <div class="modal-header">
+          <span class="modal-brand">Bee Dee Lodge</span>
+          <h2 class="modal-title-text">Select Room Preference</h2>
+          <p class="modal-subtext">Choose between AC and Non AC options.</p>
+        </div>
+        <div class="modal-property-options">
+          <button class="btn btn-lime modal-prop-btn" id="modalLodgeSelectNonAcBtn">Non AC Room (₹799/night)</button>
+          <button class="btn btn-lime modal-prop-btn" id="modalLodgeSelectAcBtn">AC Room (₹1,800/night)</button>
         </div>
       </div>
       

@@ -1075,7 +1075,7 @@ ul { list-style: none; }
 }
 .stay-cards-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   margin-top: 40px;
 }
@@ -1100,6 +1100,7 @@ ul { list-style: none; }
 .stay-card.selected {
   border-color: var(--lime);
   background: rgba(215, 255, 63, 0.05);
+  box-shadow: 0 10px 40px rgba(215, 255, 63, 0.15), var(--shadow-md);
 }
 .stay-badge {
   display: inline-block;
@@ -3226,5 +3227,22 @@ section:not(.hero) {
   .additional-charges-box {
     border-radius: 20px;
     padding: 16px;
+  }
+}
+
+/* ============================================================
+   BEE DEE LODGE CAROUSEL HEIGHT OVERRIDES
+   ============================================================ */
+#roomBeeDeeLodge {
+  min-height: 600px;
+}
+@media (max-width: 1023px) {
+  #roomBeeDeeLodge .room-carousel {
+    height: 460px !important;
+  }
+}
+@media (max-width: 768px) {
+  #roomBeeDeeLodge .room-carousel {
+    height: 360px !important;
   }
 }
