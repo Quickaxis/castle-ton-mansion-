@@ -1159,6 +1159,47 @@ ul { list-style: none; }
   color: var(--dark);
   border: 2px solid rgba(18, 50, 74, 0.2);
 }
+.btn-share-stay {
+  background: rgba(18, 50, 74, 0.05) !important;
+  color: var(--navy) !important;
+  border: 2px dashed rgba(18, 50, 74, 0.3) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.btn-share-stay:hover {
+  background: var(--navy) !important;
+  color: #ffffff !important;
+  border-color: var(--navy) !important;
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translate(-50%, 50px);
+  background: rgba(18, 50, 74, 0.95);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 9999;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.toast-notification.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
 .stay-tab:not(.active):hover {
   background: rgba(255, 255, 255, 0.95);
   border-color: rgba(18, 50, 74, 0.4);
@@ -2447,7 +2488,17 @@ img:not([src]), img[src=""] {
   .about-desc { font-size: 16.5px; line-height: 1.65; margin-bottom: 24px; }
   .about-highlight-box { padding: 16px 18px; margin-bottom: 28px; }
   .about-img-wrap { height: 320px; }
-  .about-img-secondary { height: clamp(280px, 45vw, 360px); }
+  .stay-tabs-wrap {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-bottom: 24px !important;
+    margin-top: 12px !important;
+  }
+  .stay-tab {
+    padding: 10px 18px !important;
+    font-size: 0.82rem !important;
+  }
+
   /* Compact Mobile Cards & Spacings */
   .room-card, .apartment-card, #roomBeeDeeLodge {
     height: auto !important;

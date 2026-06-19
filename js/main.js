@@ -333,7 +333,7 @@ function initRoomsTabSelector() {
 
   if (!selectMansionBtn || !selectApartmentBtn || !selectLodgeBtn) return;
 
-  function selectStay(type) {
+  function selectStay(type, preventScroll = false) {
     selectedStayType = type;
 
     if (type === 'mansion') {
@@ -376,16 +376,28 @@ function initRoomsTabSelector() {
 
     stayTabsWrap.classList.remove('hidden');
 
-    setTimeout(() => {
-      let targetContainer;
-      if (type === 'mansion') targetContainer = mansionRoomsContainer;
-      else if (type === 'apartment') targetContainer = apartmentRoomsContainer;
-      else if (type === 'lodge') targetContainer = lodgeRoomsContainer;
-      
-      const offset = 120;
-      const top = targetContainer.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }, 100);
+    // Update URL hash without refreshing
+    let typeHash = '';
+    if (type === 'mansion') typeHash = 'mansion-rooms';
+    else if (type === 'apartment') typeHash = 'apartment-rooms';
+    else if (type === 'lodge') typeHash = 'bee-dee-lodge';
+
+    if (typeHash && window.location.hash !== '#' + typeHash) {
+      history.pushState(null, null, '#' + typeHash);
+    }
+
+    if (!preventScroll) {
+      setTimeout(() => {
+        let targetContainer;
+        if (type === 'mansion') targetContainer = mansionRoomsContainer;
+        else if (type === 'apartment') targetContainer = apartmentRoomsContainer;
+        else if (type === 'lodge') targetContainer = lodgeRoomsContainer;
+        
+        const offset = window.innerWidth < 768 ? 80 : 120;
+        const top = targetContainer.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }, 100);
+    }
   }
 
   selectMansionBtn.addEventListener('click', (e) => {
@@ -408,6 +420,42 @@ function initRoomsTabSelector() {
   tabMansion.addEventListener('click', () => selectStay('mansion'));
   tabApartment.addEventListener('click', () => selectStay('apartment'));
   tabLodge.addEventListener('click', () => selectStay('lodge'));
+
+  // Share Stay Button Click Handler
+  const btnShareStay = document.getElementById('btnShareStay');
+  if (btnShareStay) {
+    btnShareStay.addEventListener('click', (e) => {
+      e.stopPropagation();
+      let typeHash = 'mansion-rooms';
+      if (selectedStayType === 'mansion') typeHash = 'mansion-rooms';
+      else if (selectedStayType === 'apartment') typeHash = 'apartment-rooms';
+      else if (selectedStayType === 'lodge') typeHash = 'bee-dee-lodge';
+      
+      const shareUrl = window.location.href.split('#')[0] + '#' + typeHash;
+      copyToClipboard(shareUrl);
+    });
+  }
+
+  // Handle initial URL hash on page load
+  const initHash = window.location.hash;
+  if (initHash) {
+    let type = null;
+    if (initHash === '#mansion-rooms') type = 'mansion';
+    else if (initHash === '#apartment-rooms') type = 'apartment';
+    else if (initHash === '#bee-dee-lodge') type = 'lodge';
+
+    if (type) {
+      selectStay(type, true);
+      setTimeout(() => {
+        const roomsSection = document.getElementById('rooms');
+        if (roomsSection) {
+          const offset = window.innerWidth < 768 ? 80 : 100;
+          const top = roomsSection.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }, 400);
+    }
+  }
 }
 
 // ── BOOKING MODAL SYSTEM ──────────────────────────────────
@@ -432,11 +480,11 @@ function initBookingModal() {
   if (!modal || !closeBtn || !whatsappOpt) return;
 
   function openModal(roomName = "", unitNum = null) {
-    stepPropertySelect.classList.add('hidden');
-    if (modalStepLodgePreference) modalStepLodgePreference.classList.add('hidden');
-    stepContactOptions.classList.remove('hidden');
-
     if (roomName) {
+      stepPropertySelect.classList.add('hidden');
+      if (modalStepLodgePreference) modalStepLodgePreference.classList.add('hidden');
+      stepContactOptions.classList.remove('hidden');
+
       modalTitle.textContent = `Book ${roomName}`;
       
       const isApartment = unitNum !== null && unitNum !== 'Lodge' && (roomName.includes('2BHK') || roomName.includes('3BHK') || roomName.includes('Apartment'));
@@ -476,8 +524,22 @@ function initBookingModal() {
       
       whatsappOpt.href = `https://wa.me/919864323486?text=${encodeURIComponent(text)}`;
     } else {
-      stepPropertySelect.classList.remove('hidden');
-      stepContactOptions.classList.add('hidden');
+      // Check current stay category to pre-select
+      let currentCategory = '';
+      if (selectedStayType === 'mansion' || window.location.hash === '#mansion-rooms') currentCategory = 'mansion';
+      else if (selectedStayType === 'apartment' || window.location.hash === '#apartment-rooms') currentCategory = 'apartment';
+      else if (selectedStayType === 'lodge' || window.location.hash === '#bee-dee-lodge') currentCategory = 'lodge';
+
+      if (currentCategory) {
+        selectPropertyType(currentCategory);
+      } else {
+        stepPropertySelect.classList.remove('hidden');
+        stepContactOptions.classList.add('hidden');
+        if (modalStepLodgePreference) modalStepLodgePreference.classList.add('hidden');
+        modalBrand.textContent = "Select Property";
+        modalTitle.textContent = "Book Your Stay";
+        modalSubtext.textContent = "Please select the property category you want to book.";
+      }
     }
     
     modal.classList.add('active');
@@ -626,4 +688,53 @@ function initOccupancySelectors() {
       }
     });
   });
+}
+
+// ── TOAST & CLIPBOARD HELPERS ──────────────────────────────
+function showToast(message) {
+  let toast = document.getElementById('toastNotification');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toastNotification';
+    toast.className = 'toast-notification';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: #DFFF3F; margin-right: 6px; vertical-align: middle;"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+    <span>${message}</span>
+  `;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2500);
+}
+
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast("Link copied");
+    }).catch(err => {
+      fallbackCopyTextToClipboard(text);
+    });
+  } else {
+    fallbackCopyTextToClipboard(text);
+  }
+}
+
+function fallbackCopyTextToClipboard(text) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.position = "fixed";
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  try {
+    document.execCommand('copy');
+    showToast("Link copied");
+  } catch (err) {
+    console.error('Fallback copy failed', err);
+  }
+  document.body.removeChild(textArea);
 }
