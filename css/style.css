@@ -3129,3 +3129,102 @@ section:not(.hero) {
 }
 
 
+/* ============================================================
+   ADDITIONAL CHARGES SYSTEM FOR MANSION ROOMS
+   ============================================================ */
+.additional-charges-box {
+  background: rgba(255, 255, 255, 0.65); /* soft white/glass background */
+  border: 1px solid rgba(18, 50, 74, 0.08);
+  border-radius: 22px;
+  padding: 18px 20px;
+  width: 100%;
+  margin-bottom: 24px; /* spacing before booking buttons */
+  box-sizing: border-box;
+}
+
+.charges-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.charges-accent-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 8px var(--lime);
+  display: inline-block;
+}
+
+.charges-title {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+.charges-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.charge-item.row-style {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.charge-item.column-style {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.charge-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.charge-label {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.charge-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.charge-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .charge-item.row-style,
+  .charge-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .charge-value {
+    font-size: 0.88rem;
+  }
+  .additional-charges-box {
+    border-radius: 20px;
+    padding: 16px;
+  }
+}
