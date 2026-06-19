@@ -2839,3 +2839,191 @@ section:not(.hero) {
   }
 }
 
+/* ============================================================
+   APARTMENT REBUILD ADDITIONS
+   ============================================================ */
+
+/* Apartment Card & Carousel Layout Overrides */
+.apartment-card {
+  height: 640px; /* fixed height around 520px to 680px */
+  min-height: 580px;
+}
+
+.apartment-card .room-info {
+  height: 100%;
+  justify-content: space-between;
+  padding: 44px 44px; /* slightly smaller padding for layout balance */
+}
+
+.apartment-card .room-carousel {
+  height: 100%;
+  min-height: 100%;
+}
+
+.apartment-card .carousel-track {
+  height: 100%;
+}
+
+.apartment-card .carousel-slide {
+  height: 100%;
+}
+
+/* Photo Placeholders for Apartment Carousels */
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #F3F2EB; /* soft ivory/light grey */
+  border: 1px dashed rgba(18, 50, 74, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: inherit;
+  color: var(--navy);
+  transition: background var(--transition);
+}
+
+.photo-placeholder .placeholder-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  color: #ffffff;
+}
+
+/* Small lime dot/icon inside the placeholder icon */
+.photo-placeholder .placeholder-icon::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lime);
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-shadow: 0 0 8px var(--lime);
+}
+
+.photo-placeholder .placeholder-text {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* Occupancy & Pricing Selector */
+.occupancy-selector-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin: 16px 0 20px;
+}
+
+.occupancy-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-radius: 18px;
+  border: 2px solid rgba(18, 50, 74, 0.12);
+  background: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  color: var(--dark);
+}
+
+.occupancy-option:hover {
+  border-color: var(--navy);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.occupancy-option.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.occupancy-option .option-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+}
+
+.occupancy-option .option-label {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.occupancy-option .option-subtext {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.occupancy-option.active .option-subtext {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.occupancy-option .option-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.occupancy-option .price-old {
+  font-size: 0.88rem;
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.occupancy-option.active .price-old {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.occupancy-option .price-final {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.occupancy-option.active .price-final {
+  color: var(--lime);
+}
+
+/* Responsive Overrides for Apartments */
+@media (max-width: 1023px) {
+  .apartment-card {
+    height: auto;
+    min-height: unset;
+  }
+  .apartment-card .room-carousel {
+    height: 380px; /* height around 300px to 420px */
+    min-height: 300px;
+    border-radius: 36px 36px 0 0 !important;
+  }
+  .apartment-card .room-info {
+    padding: 32px 24px;
+  }
+  .apartment-card .btn-room {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+

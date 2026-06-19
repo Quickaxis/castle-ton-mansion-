@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRoomsTabSelector();
   initBookingModal();
   initInstagramEmbeds();
+  initOccupancySelectors();
 });
 
 // ── NAVBAR — scroll & active state ─────────────────────────
@@ -103,16 +104,10 @@ function initCarousels() {
     { track: 'ffNoBalconyTrack', dots: 'ffNoBalconyDots' },
     { track: 'aboutRoomTrack',  dots: 'aboutRoomDots' },
     
-    // 2BHK Stays
-    { track: 'apt2bhkHallTrack',  dots: 'apt2bhkHallDots' },
-    { track: 'apt2bhkRoom1Track', dots: 'apt2bhkRoom1Dots' },
-    { track: 'apt2bhkRoom2Track', dots: 'apt2bhkRoom2Dots' },
-    
-    // 3BHK Stays
-    { track: 'apt3bhkHallTrack',  dots: 'apt3bhkHallDots' },
-    { track: 'apt3bhkRoom1Track', dots: 'apt3bhkRoom1Dots' },
-    { track: 'apt3bhkRoom2Track', dots: 'apt3bhkRoom2Dots' },
-    { track: 'apt3bhkRoom3Track', dots: 'apt3bhkRoom3Dots' },
+    // Apartment Units
+    { track: 'aptUnit1Track',  dots: 'aptUnit1Dots' },
+    { track: 'aptUnit2Track',  dots: 'aptUnit2Dots' },
+    { track: 'aptUnit3Track',  dots: 'aptUnit3Dots' },
   ];
 
   rooms.forEach(room => setupCarousel(room.track, room.dots));
@@ -388,22 +383,27 @@ function initBookingModal() {
 
   if (!modal || !closeBtn || !whatsappOpt) return;
 
-  function openModal(roomName = "") {
+  function openModal(roomName = "", unitNum = null) {
     stepPropertySelect.classList.add('hidden');
     stepContactOptions.classList.remove('hidden');
 
     if (roomName) {
       modalTitle.textContent = `Book ${roomName}`;
       
-      const isApartment = roomName.includes('2BHK') || roomName.includes('3BHK');
+      const isApartment = unitNum !== null || roomName.includes('2BHK') || roomName.includes('3BHK');
       let text = '';
       if (isApartment) {
         modalBrand.textContent = "The Castleton Apartment";
         modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
-        if (roomName.includes('Apartment')) {
-          text = `Hi, I want to book the ${roomName} at The Castleton Apartment. Please share availability.`;
+        if (unitNum) {
+          const activeOption = document.querySelector(`#unit${unitNum}Selector .occupancy-option.active`);
+          text = activeOption ? activeOption.getAttribute('data-msg') : '';
         } else {
-          text = `Hi, I want to book ${roomName} at The Castleton Apartment. Please share availability.`;
+          if (roomName.includes('Apartment')) {
+            text = `Hi, I want to book the ${roomName} at The Castleton Apartment. Please share availability.`;
+          } else {
+            text = `Hi, I want to book ${roomName} at The Castleton Apartment. Please share availability.`;
+          }
         }
       } else {
         modalBrand.textContent = "The Castleton Mansion";
@@ -462,7 +462,8 @@ function initBookingModal() {
     if (trigger) {
       e.preventDefault();
       const roomName = trigger.getAttribute('data-room-name');
-      openModal(roomName);
+      const unitNum = trigger.getAttribute('data-unit');
+      openModal(roomName, unitNum);
     }
   });
 
@@ -532,4 +533,23 @@ function loadInstagramScript() {
     }
   };
   document.body.appendChild(script);
+}
+
+// ── OCCUPANCY/PREFERENCE SELECTORS ─────────────────────────
+function initOccupancySelectors() {
+  const options = document.querySelectorAll('.occupancy-option');
+  options.forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      const parent = opt.closest('.occupancy-selector-group');
+      if (!parent) return;
+      
+      // Remove active from all options in this group
+      parent.querySelectorAll('.occupancy-option').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Add active to clicked option
+      opt.classList.add('active');
+    });
+  });
 }
