@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://castle-ton-mansion-.vercel.app/sitemap.xml

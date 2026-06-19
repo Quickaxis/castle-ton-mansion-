@@ -3508,3 +3508,25 @@ section:not(.hero) {
     z-index: 10 !important;
   }
 }
+
+/* SEO Anchor Scroll Margin */
+#rooms,
+#mansion-rooms,
+#apartment-rooms,
+#bee-dee-lodge {
+  scroll-margin-top: 120px;
+}
+
+/* Local SEO text paragraph inside Location card */
+.loc-seo-text {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-top: 24px;
+  font-weight: 500;
+}
+
+/* General hidden helper utility */
+.hidden {
+  display: none !important;
+}
