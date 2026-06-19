@@ -3231,7 +3231,7 @@ section:not(.hero) {
 }
 
 /* ============================================================
-   BEE DEE LODGE CAROUSEL HEIGHT OVERRIDES
+   BEE DEE LODGE MOBILE LAYOUT & OVERRIDES
    ============================================================ */
 #roomBeeDeeLodge {
   min-height: 600px;
@@ -3242,7 +3242,63 @@ section:not(.hero) {
   }
 }
 @media (max-width: 768px) {
+  /* Reduce outer section padding on mobile for rooms section */
+  #rooms.section-pad {
+    padding: 60px 0 !important;
+  }
+  #rooms .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  
+  /* Bee Dee Lodge Card and Carousel mobile overrides */
+  #roomBeeDeeLodge {
+    width: 100% !important;
+    max-width: none !important;
+    display: flex !important;
+    flex-direction: column !important; /* carousel first, content below */
+    height: auto !important;
+    min-height: unset !important;
+    border-radius: 32px !important; /* keep rounded corners */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
   #roomBeeDeeLodge .room-carousel {
-    height: 360px !important;
+    width: 100% !important;
+    height: clamp(380px, 68vh, 560px) !important;
+    min-height: unset !important;
+    border-radius: 32px 32px 0 0 !important; /* image carousel first, top rounded corners */
+    overflow: hidden !important;
+    position: relative !important;
+  }
+  
+  #roomBeeDeeLodge .carousel-track,
+  #roomBeeDeeLodge .carousel-slide,
+  #roomBeeDeeLodge .carousel-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: inherit !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  #roomBeeDeeLodge .room-info {
+    width: 100% !important;
+    padding: 24px 16px !important; /* content below */
+    box-sizing: border-box !important;
+  }
+
+  /* Make sure dots do not shift layout and sit on top of the image */
+  #roomBeeDeeLodge .carousel-dots {
+    position: absolute !important;
+    bottom: 16px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 10 !important;
   }
 }
