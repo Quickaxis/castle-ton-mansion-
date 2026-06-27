@@ -108,6 +108,7 @@ function initCarousels() {
     { track: 'aptUnit1Track',  dots: 'aptUnit1Dots' },
     { track: 'aptUnit2Track',  dots: 'aptUnit2Dots' },
     { track: 'aptUnit3Track',  dots: 'aptUnit3Dots' },
+    { track: 'aptPrivate3bhkTrack', dots: 'aptPrivate3bhkDots' },
     
     // Lodge Rooms
     { track: 'beeDeeLodgeTrack', dots: 'beeDeeLodgeDots' },
@@ -487,13 +488,15 @@ function initBookingModal() {
 
       modalTitle.textContent = `Book ${roomName}`;
       
-      const isApartment = unitNum !== null && unitNum !== 'Lodge' && (roomName.includes('2BHK') || roomName.includes('3BHK') || roomName.includes('Apartment'));
+      const isApartment = (unitNum !== null && unitNum !== 'Lodge' && (roomName.includes('2BHK') || roomName.includes('3BHK') || roomName.includes('Apartment'))) || roomName === 'Private 3BHK Apartment';
       const isLodge = unitNum === 'Lodge';
       let text = '';
       if (isApartment) {
         modalBrand.textContent = "The Castleton Apartment";
         modalSubtext.textContent = "Choose your preferred booking option. Direct WhatsApp booking.";
-        if (unitNum) {
+        if (roomName === 'Private 3BHK Apartment') {
+          text = "Hi, I want to book the Private 3BHK Apartment at The Castleton. Location: Downtown Hospital Backside, Mathuranagar, Sakuntala Path, Bylane No. 5, House No. 25, Guwahati. Please confirm availability. Price shown is ₹7,500 per night.";
+        } else if (unitNum) {
           const activeOption = document.querySelector(`#unit${unitNum}PrefSelector .pref-btn.active`);
           text = activeOption ? activeOption.getAttribute('data-msg') : '';
         } else {
